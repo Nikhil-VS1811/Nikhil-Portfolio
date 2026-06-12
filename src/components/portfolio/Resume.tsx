@@ -3,36 +3,34 @@ import { Download } from "lucide-react";
 
 const skills = [
   { label: "Languages", value: "Python, JavaScript, TypeScript, SQL" },
-  { label: "Frontend", value: "React, Tailwind CSS, Vite" },
-  { label: "Backend", value: "Flask, REST APIs, JWT, SQLAlchemy" },
-  { label: "Databases", value: "PostgreSQL, SQLite, Redis, ChromaDB" },
-  { label: "AI / ML", value: "OpenAI API, LangChain, RAG, embeddings" },
-  { label: "Tools", value: "Git, GitHub, Docker, Postman, Linux" },
+  { label: "Frontend", value: "React, TypeScript, Tailwind CSS" },
+  { label: "Backend", value: "FastAPI, Flask, SQLAlchemy, REST APIs" },
+  { label: "Databases", value: "PostgreSQL" },
+  { label: "AI / ML", value: "OpenAI API, Gemini API, Scikit-learn" },
+  { label: "Tools", value: "Docker, Git, GitHub, Vercel, Render" },
 ];
 
 const projects = [
   {
+    name: "AI Code Reviewer",
+    detail:
+      "Reviews source code for bugs, security issues and maintainability using OpenAI/Gemini. React + FastAPI + PostgreSQL with JWT auth and Docker.",
+  },
+  {
+    name: "Fraud Detection System",
+    detail:
+      "ML platform that scores transactions and flags suspicious activity through an interactive dashboard. React + FastAPI + Scikit-learn + PostgreSQL.",
+  },
+  {
+    name: "FeedMap AI",
+    detail:
+      "Community feedback and issue-mapping platform with auto-categorization and location-aware analytics. React + FastAPI + OpenAI + Leaflet.",
+  },
+  {
     name: "GeetAI",
     detail:
-      "Flask + SQLAlchemy backend with JWT auth, React frontend, OpenAI-driven contextual Bhagavad Gita guidance, and mood-aware history.",
+      "AI wellness companion offering contextual Bhagavad Gita guidance based on user moods. Flask + SQLAlchemy backend with JWT and OpenAI integration.",
   },
-  {
-    name: "DocuQuery",
-    detail:
-      "RAG document Q&A with semantic chunking, OpenAI embeddings, ChromaDB vector search, and cited source pages in a React UI.",
-  },
-  {
-    name: "DevDash",
-    detail:
-      "Developer analytics dashboard using the GitHub API with Redis caching, rendered through React and Chart.js.",
-  },
-];
-
-const achievements = [
-  "Finalist — College AI Hackathon, 2024 (shipped a working RAG demo in 24h).",
-  "Top 10 — Inter-college Full Stack Build Sprint, 2024.",
-  "Open-source contributor: small PRs to the Flask ecosystem and LangChain docs.",
-  "Regular weekend hackathon participant focused on AI tooling and DX.",
 ];
 
 export function Resume() {
@@ -68,25 +66,25 @@ export function Resume() {
             Summary
           </h3>
           <p className="text-muted-foreground text-sm leading-relaxed">
-            Student developer building practical AI-powered web applications.
-            Comfortable across Flask backends, React frontends, REST APIs, and
-            LLM workflows such as RAG, embeddings, and retrieval. I focus on
-            shipping end-to-end projects with clean architecture.
+            Final-year Information Science student building AI-powered, full
+            stack applications. Comfortable across FastAPI / Flask backends,
+            React frontends, PostgreSQL and LLM integrations with OpenAI and
+            Gemini. Focused on taking ideas from concept to deployment.
           </p>
 
           <h3 className="font-mono text-xs uppercase tracking-wider text-primary mt-8 mb-4">
             Education
           </h3>
           <div className="text-foreground text-sm font-medium">
-            B.Tech in Computer Science
+            B.E. in Information Science and Engineering
           </div>
           <div className="text-muted-foreground text-sm mt-1">
-            XYZ Institute of Technology
-            <span className="font-mono text-xs ml-2">2022 – 2026</span>
+            East West Institute of Technology, Bengaluru
+            <span className="font-mono text-xs ml-2">2023 – 2027</span>
           </div>
           <p className="text-muted-foreground text-sm mt-3 leading-relaxed">
-            Coursework: Data Structures, DBMS, Operating Systems, Machine
-            Learning, Web Engineering.
+            CGPA: 8.88 (up to 5th Semester). Coursework: Data Structures,
+            DBMS, Operating Systems, Machine Learning, Web Engineering.
           </p>
         </div>
 
@@ -117,23 +115,6 @@ export function Resume() {
                 <p className="text-muted-foreground text-sm mt-1 leading-relaxed">
                   {p.detail}
                 </p>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="p-7 rounded-2xl border border-border bg-card md:col-span-2">
-          <h3 className="font-mono text-xs uppercase tracking-wider text-primary mb-5">
-            Hackathons & Achievements
-          </h3>
-          <ul className="space-y-2.5">
-            {achievements.map((a) => (
-              <li
-                key={a}
-                className="text-muted-foreground text-sm leading-relaxed flex gap-3"
-              >
-                <span className="text-primary mt-1.5 w-1 h-1 rounded-full bg-primary shrink-0" />
-                <span>{a}</span>
               </li>
             ))}
           </ul>
