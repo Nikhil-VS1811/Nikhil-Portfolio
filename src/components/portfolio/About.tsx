@@ -5,35 +5,35 @@ export function About() {
     <Section
       id="about"
       eyebrow="About"
-      title="Developer focused on practical AI."
+      title="AI engineering & full stack development."
     >
       <div className="grid md:grid-cols-3 gap-12">
         <div className="md:col-span-2 space-y-5 text-muted-foreground leading-relaxed text-lg">
           <p>
-            I build full stack applications that combine modern web tech with
-            AI capabilities — from Flask backends and REST APIs to React
-            frontends that talk to language models, retrieval systems and
-            intelligent workflows.
+            I'm Nikhil VS, a final-year Information Science student working at the
+            intersection of Machine Learning, full stack development and Generative AI.
+            I enjoy taking ideas from concept to deployment — building complete products
+            with Python, FastAPI, React and PostgreSQL.
           </p>
           <p>
-            My stack centers on Python and Flask for server-side logic, React
-            and TypeScript for UI, and hands-on experimentation with LLMs, prompt
-            engineering and tool integration. I care about clean code, working
-            products, and interfaces that feel obvious once you use them.
+            Recent work includes an AI Code Review system and a Fraud Detection
+            platform — focused on scalable backend architecture, applied ML and
+            practical AI integration. I'm actively looking for AI/ML and Software
+            Engineering roles where I can contribute, learn and ship real products.
           </p>
         </div>
         <div className="space-y-6 font-mono text-sm">
           <div>
             <div className="text-muted-foreground">Currently</div>
-            <div className="text-foreground">Student Developer</div>
+            <div className="text-foreground">B.E. ISE · Final year</div>
           </div>
           <div>
             <div className="text-muted-foreground">Based in</div>
-            <div className="text-foreground">India</div>
+            <div className="text-foreground">Bengaluru, India</div>
           </div>
           <div>
             <div className="text-muted-foreground">Focus</div>
-            <div className="text-foreground">Flask · React · LLM APIs</div>
+            <div className="text-foreground">FastAPI · React · LLM APIs</div>
           </div>
         </div>
       </div>

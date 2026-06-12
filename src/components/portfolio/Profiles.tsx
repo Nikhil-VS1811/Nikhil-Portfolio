@@ -1,12 +1,24 @@
 import { Section } from "./Section";
 
 const profiles = [
-  { platform: "GitHub", handle: "@arjun", stat: "1.2k followers · 320 stars", href: "#" },
-  { platform: "LeetCode", handle: "@arjun", stat: "Guardian · 2180 rating", href: "#" },
-  { platform: "Codeforces", handle: "@arjun", stat: "Expert · 1742", href: "#" },
-  { platform: "HuggingFace", handle: "@arjun", stat: "14 models published", href: "#" },
-  { platform: "Kaggle", handle: "@arjun", stat: "Notebooks Expert", href: "#" },
-  { platform: "LinkedIn", handle: "in/arjun", stat: "5k+ connections", href: "#" },
+  {
+    platform: "GitHub",
+    handle: "@Nikhil-VS1811",
+    stat: "Projects & open-source work",
+    href: "https://github.com/Nikhil-VS1811",
+  },
+  {
+    platform: "LinkedIn",
+    handle: "in/nikhil-vs",
+    stat: "Professional profile",
+    href: "https://www.linkedin.com/in/nikhil-vs/",
+  },
+  {
+    platform: "LeetCode",
+    handle: "@Nikhilvs1811",
+    stat: "DSA practice",
+    href: "https://leetcode.com/u/Nikhilvs1811/",
+  },
 ];
 
 export function Profiles() {
@@ -21,6 +33,8 @@ export function Profiles() {
           <a
             key={p.platform}
             href={p.href}
+            target="_blank"
+            rel="noopener noreferrer"
             className="group flex items-center justify-between p-6 bg-card hover:bg-accent transition-colors"
           >
             <div>
