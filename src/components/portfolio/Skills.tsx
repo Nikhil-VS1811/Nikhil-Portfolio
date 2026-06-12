@@ -2,20 +2,20 @@ import { Section } from "./Section";
 
 const groups = [
   {
-    title: "AI & ML",
-    items: ["OpenAI", "Anthropic", "LangGraph", "LlamaIndex", "pgvector", "RAG", "Evals"],
+    title: "Languages",
+    items: ["Python", "TypeScript", "JavaScript", "SQL"],
   },
   {
     title: "Frontend",
-    items: ["React", "Next.js", "TypeScript", "Tailwind", "TanStack", "Framer Motion"],
+    items: ["React", "TypeScript", "Tailwind CSS", "Vite"],
   },
   {
     title: "Backend",
-    items: ["Node.js", "Python", "FastAPI", "tRPC", "PostgreSQL", "Redis"],
+    items: ["FastAPI", "Flask", "PostgreSQL", "SQLAlchemy", "REST APIs"],
   },
   {
-    title: "Infrastructure",
-    items: ["AWS", "Cloudflare", "Docker", "Terraform", "GitHub Actions", "Vercel"],
+    title: "AI & Tooling",
+    items: ["OpenAI API", "Gemini API", "Docker", "Git", "GitHub", "Vercel", "Render"],
   },
 ];
 
