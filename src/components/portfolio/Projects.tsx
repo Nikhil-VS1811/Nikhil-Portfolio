@@ -14,25 +14,34 @@ type Project = {
   github: string;
   demo?: string;
   Preview: React.ComponentType;
+  featured?: boolean;
 };
 
 const projects: Project[] = [
   {
     name: "AI Code Reviewer",
     description:
-      "AI-powered platform that reviews source code for bugs, security vulnerabilities, performance bottlenecks and maintainability issues. Generates detailed explanations and actionable improvement suggestions using LLMs.",
+      "A full-stack, production-ready AI code review platform that analyzes source code and GitHub repositories for security vulnerabilities, maintainability issues, code quality problems and risky coding patterns. Features JWT auth, repo-level analysis, repository health scoring, an analytics dashboard with review history, and PDF report export — all containerized with Docker.",
     stack: [
       "React",
       "FastAPI",
+      "TypeScript",
+      "Python",
       "PostgreSQL",
-      "Docker",
-      "OpenAI API",
-      "Gemini API",
-      "JWT",
       "SQLAlchemy",
+      "Docker",
+      "JWT",
+      "GitHub Actions",
+      "Render",
+      "Vercel",
+      "AI",
+      "Code Review",
+      "Security Analysis",
     ],
     github: "https://github.com/Nikhil-VS1811/AI-Code-Reviewer",
+    demo: "https://ai-code-reviewer-seven-brown.vercel.app/",
     Preview: CodeReviewPreview,
+    featured: true,
   },
   {
     name: "Fraud Detection System",
@@ -82,25 +91,59 @@ export function Projects() {
       <div className="grid md:grid-cols-2 gap-6">
         {projects.map((p) => {
           const Preview = p.Preview;
+          const featured = p.featured;
           return (
             <div
               key={p.name}
-              className="group flex flex-col rounded-2xl border border-border bg-card overflow-hidden hover:border-primary/40 transition-all duration-300 hover:-translate-y-0.5"
+              className={`group relative flex flex-col rounded-2xl border bg-card overflow-hidden transition-all duration-300 hover:-translate-y-0.5 ${
+                featured
+                  ? "md:col-span-2 border-primary/40 shadow-xl shadow-primary/5 hover:border-primary/70 hover:shadow-primary/20"
+                  : "border-border hover:border-primary/40"
+              }`}
             >
+              {featured && (
+                <>
+                  <div
+                    className="pointer-events-none absolute inset-0 opacity-60"
+                    style={{
+                      background:
+                        "radial-gradient(ellipse at top left, hsl(var(--primary) / 0.10), transparent 55%)",
+                    }}
+                  />
+                  <div className="absolute top-4 right-4 z-10 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary/15 border border-primary/30 backdrop-blur">
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+                    <span className="text-[10px] font-mono uppercase tracking-wider text-primary">
+                      Flagship
+                    </span>
+                  </div>
+                </>
+              )}
               {/* UI preview */}
-              <div className="relative h-56 bg-gradient-to-br from-muted/40 to-background border-b border-border overflow-hidden">
-                <div className="absolute inset-0 p-5 flex items-center justify-center">
+              <div
+                className={`relative bg-gradient-to-br from-muted/40 to-background border-b border-border overflow-hidden ${
+                  featured ? "h-64 md:h-80" : "h-56"
+                }`}
+              >
+                <div className={`absolute inset-0 flex items-center justify-center ${featured ? "p-6 md:p-8" : "p-5"}`}>
                   <Preview />
                 </div>
               </div>
 
               {/* Content */}
-              <div className="flex flex-col flex-1 p-7">
-                <h3 className="text-xl font-medium text-foreground mb-4">
+              <div className={`relative flex flex-col flex-1 ${featured ? "p-8" : "p-7"}`}>
+                <h3
+                  className={`font-medium text-foreground mb-4 ${
+                    featured ? "text-2xl md:text-3xl" : "text-xl"
+                  }`}
+                >
                   {p.name}
                 </h3>
 
-                <p className="text-muted-foreground leading-relaxed text-sm mb-6 flex-1">
+                <p
+                  className={`text-muted-foreground leading-relaxed mb-6 flex-1 ${
+                    featured ? "text-[15px] md:text-base max-w-3xl" : "text-sm"
+                  }`}
+                >
                   {p.description}
                 </p>
 
@@ -109,7 +152,11 @@ export function Projects() {
                   {p.stack.map((s) => (
                     <span
                       key={s}
-                      className="font-mono text-[11px] px-2.5 py-1 rounded-full bg-muted text-muted-foreground"
+                      className={`font-mono text-[11px] px-2.5 py-1 rounded-full ${
+                        featured
+                          ? "bg-primary/10 text-primary/90 border border-primary/20"
+                          : "bg-muted text-muted-foreground"
+                      }`}
                     >
                       {s}
                     </span>
