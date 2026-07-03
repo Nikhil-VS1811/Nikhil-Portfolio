@@ -16,12 +16,12 @@ const codeLines: Array<{ tokens: Array<{ t: string; c?: string }> }> = [
 ];
 
 const tokenColor: Record<string, string> = {
-  kw: "text-[hsl(var(--primary))]",
-  str: "text-emerald-300/90",
-  fn: "text-indigo-300",
-  cls: "text-cyan-200",
-  var: "text-foreground/90",
-  dec: "text-fuchsia-300/90",
+  kw: "text-foreground",
+  str: "text-muted-foreground",
+  fn: "text-foreground/85",
+  cls: "text-foreground/75",
+  var: "text-muted-foreground",
+  dec: "text-muted-foreground/80",
 };
 
 function useCountUp(target: number, duration = 1400) {
@@ -49,16 +49,15 @@ function StatCard({ value, suffix = "", label, delay = 0 }: { value: number; suf
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
       viewport={viewportOnce}
       transition={{ duration: 0.6, ease: easeOut, delay: delay / 1000 }}
-      whileHover={{ y: -3, transition: { duration: 0.3, ease: easeOut } }}
-      className="relative rounded-2xl border border-border bg-card/50 backdrop-blur-md p-4 overflow-hidden group hover:border-primary/40 transition-colors"
+      whileHover={{ y: -2, transition: { duration: 0.3, ease: easeOut } }}
+      className="relative rounded-xl border border-border/80 bg-card/40 backdrop-blur-md p-5 overflow-hidden group hover:border-border transition-colors"
     >
-      <div className="absolute -inset-px rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity" style={{ background: "radial-gradient(400px circle at var(--x,50%) var(--y,50%), hsl(var(--primary)/0.08), transparent 40%)" }} />
       <div className="relative">
-        <div className="text-2xl md:text-3xl font-medium tracking-tight text-foreground tabular-nums">
+        <div className="text-3xl md:text-4xl font-medium tracking-[-0.02em] text-foreground tabular-nums">
           {n}
-          <span className="text-primary">{suffix}</span>
+          <span className="text-muted-foreground/70">{suffix}</span>
         </div>
-        <div className="mt-1.5 text-[10.5px] uppercase tracking-[0.18em] text-muted-foreground font-mono">
+        <div className="mt-3 text-[10.5px] uppercase tracking-[0.22em] text-muted-foreground/80 font-mono">
           {label}
         </div>
       </div>
@@ -75,7 +74,7 @@ function SocialIcon({ href, label, children }: { href: string; label: string; ch
       aria-label={label}
       whileHover={{ y: -2, scale: 1.05, transition: { duration: 0.25, ease: easeOut } }}
       whileTap={{ scale: 0.95 }}
-      className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card/40 backdrop-blur-md text-muted-foreground hover:text-foreground hover:border-primary/50 hover:bg-card/70 transition-colors"
+      className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border/80 bg-card/30 backdrop-blur-md text-muted-foreground hover:text-foreground hover:border-border hover:bg-card/60 transition-colors"
     >
       {children}
     </motion.a>
@@ -112,9 +111,8 @@ export function Hero() {
     >
       {/* Background */}
       <motion.div aria-hidden style={{ y: yOrbs, opacity: opacityBg }} className="pointer-events-none absolute inset-0">
-        <div className="absolute inset-0 bg-grid bg-grid-fade opacity-[0.45] animate-[gridPulse_12s_ease-in-out_infinite]" />
-        <div className="absolute -top-40 left-1/3 w-[720px] h-[520px] orb opacity-60" />
-        <div className="absolute top-1/3 -right-32 w-[520px] h-[520px] orb-indigo opacity-50" />
+        <div className="absolute inset-0 bg-grid bg-grid-fade opacity-[0.5]" />
+        <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[900px] h-[500px] orb opacity-70" />
         <div className="absolute bottom-0 inset-x-0 h-40 bg-gradient-to-b from-transparent to-background" />
       </motion.div>
 
@@ -125,31 +123,31 @@ export function Hero() {
           initial="hidden"
           animate="show"
         >
-          <motion.div variants={fadeUp} className="inline-flex items-center gap-2 rounded-full border border-border bg-card/60 backdrop-blur-md pl-2 pr-4 py-1.5 text-xs text-muted-foreground">
-            <span className="relative flex h-4 w-4 items-center justify-center">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary/40" />
-              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-primary" />
+          <motion.div variants={fadeUp} className="inline-flex items-center gap-2.5 rounded-full border border-border/80 bg-card/40 backdrop-blur-md px-3.5 py-1.5 text-xs text-muted-foreground">
+            <span className="relative flex h-1.5 w-1.5">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-foreground/40" />
+              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-foreground/80" />
             </span>
             <span className="font-mono tracking-wide">Available for internships & collaborations</span>
           </motion.div>
 
-          <motion.h1 variants={fadeUp} className="mt-7 text-[40px] leading-[1.02] sm:text-5xl md:text-6xl lg:text-[72px] font-medium tracking-[-0.035em] text-foreground">
-            <span className="block text-gradient">AI Engineer</span>
-            <span className="block text-foreground/95">
-              &<span className="font-serif italic font-normal"> Full Stack</span>
+          <motion.h1 variants={fadeUp} className="mt-8 text-[44px] leading-[1.0] sm:text-6xl md:text-7xl lg:text-[80px] font-medium tracking-[-0.04em] text-foreground">
+            <span className="block">AI Engineer</span>
+            <span className="block text-muted-foreground/70">
+              & <span className="font-serif italic font-normal">Full Stack</span>
             </span>
-            <span className="block font-serif italic font-normal text-foreground/95">
-              Developer<span className="text-primary">.</span>
+            <span className="block font-serif italic font-normal">
+              Developer.
             </span>
           </motion.h1>
 
-          <motion.p variants={fadeUp} className="mt-7 max-w-xl text-base md:text-[17px] text-muted-foreground leading-relaxed">
+          <motion.p variants={fadeUp} className="mt-9 max-w-xl text-lg text-muted-foreground leading-relaxed">
             I'm Nikhil VS — I build scalable AI-powered web applications,
             developer tools, and modern full-stack products. From RAG pipelines
             to production APIs, I ship end-to-end.
           </motion.p>
 
-          <motion.div variants={fadeUp} className="mt-9 flex flex-wrap items-center gap-3">
+          <motion.div variants={fadeUp} className="mt-10 flex flex-wrap items-center gap-3">
             <motion.a
               {...buttonHover}
               href="#projects"
@@ -162,7 +160,7 @@ export function Hero() {
               {...buttonHover}
               href="/resume.pdf"
               download
-              className="inline-flex items-center gap-2 h-11 px-5 rounded-full border border-border bg-card/40 backdrop-blur-md text-sm font-medium text-foreground hover:border-primary/60 hover:bg-card/70 transition-colors"
+              className="inline-flex items-center gap-2 h-11 px-5 rounded-full border border-border/80 bg-card/30 backdrop-blur-md text-sm font-medium text-foreground hover:border-border hover:bg-card/60 transition-colors"
             >
               <Download className="w-4 h-4" />
               Download Resume
@@ -194,13 +192,13 @@ export function Hero() {
         >
           {/* Floating code editor */}
           <div className="relative float-y">
-            <div aria-hidden className="absolute -inset-8 rounded-[2rem] bg-gradient-to-br from-primary/20 via-indigo-500/10 to-transparent blur-2xl opacity-70" />
-            <div className="gradient-border relative rounded-2xl border border-border bg-card/70 backdrop-blur-xl shadow-2xl shadow-primary/10 overflow-hidden">
+            <div aria-hidden className="absolute -inset-10 rounded-[2rem] bg-white/[0.03] blur-3xl" />
+            <div className="relative rounded-2xl border border-border/80 bg-card/60 backdrop-blur-xl shadow-2xl shadow-black/40 overflow-hidden">
               {/* Titlebar */}
-              <div className="flex items-center gap-2 px-4 py-3 border-b border-border bg-card/40">
-                <span className="h-3 w-3 rounded-full bg-red-400/70" />
-                <span className="h-3 w-3 rounded-full bg-yellow-400/70" />
-                <span className="h-3 w-3 rounded-full bg-emerald-400/70" />
+              <div className="flex items-center gap-2 px-4 py-3 border-b border-border/70 bg-card/30">
+                <span className="h-2.5 w-2.5 rounded-full bg-foreground/15" />
+                <span className="h-2.5 w-2.5 rounded-full bg-foreground/15" />
+                <span className="h-2.5 w-2.5 rounded-full bg-foreground/15" />
                 <div className="ml-3 flex items-center gap-2 text-[11px] font-mono text-muted-foreground">
                   <Code2 className="w-3.5 h-3.5" />
                   main.py
@@ -211,7 +209,7 @@ export function Hero() {
               </div>
               {/* Code */}
               <div className="grid grid-cols-[auto_1fr] font-mono text-[12.5px] md:text-[13px] leading-[1.75]">
-                <div className="px-3 py-4 border-r border-border/70 text-right text-muted-foreground/60 select-none bg-background/30">
+                <div className="px-3 py-4 border-r border-border/60 text-right text-muted-foreground/50 select-none bg-background/20">
                   {codeLines.map((_, i) => (
                     <div key={i}>{i + 1}</div>
                   ))}
@@ -229,16 +227,16 @@ export function Hero() {
                         <span key={j} className={tok.c ? tokenColor[tok.c] : "text-foreground/85"}>{tok.t}</span>
                       ))}
                       {i === codeLines.length - 1 && (
-                        <span className="inline-block w-1.5 h-4 -mb-0.5 ml-0.5 bg-primary/80 animate-pulse align-middle" />
+                        <span className="inline-block w-1.5 h-4 -mb-0.5 ml-0.5 bg-foreground/70 animate-pulse align-middle" />
                       )}
                     </motion.div>
                   ))}
                 </div>
               </div>
               {/* Statusbar */}
-              <div className="flex items-center justify-between px-4 py-2 border-t border-border bg-card/40 text-[10.5px] font-mono text-muted-foreground">
+              <div className="flex items-center justify-between px-4 py-2 border-t border-border/70 bg-card/30 text-[10.5px] font-mono text-muted-foreground">
                 <div className="flex items-center gap-3">
-                  <span className="inline-flex items-center gap-1.5"><span className="h-1.5 w-1.5 rounded-full bg-emerald-400" /> connected</span>
+                  <span className="inline-flex items-center gap-1.5"><span className="h-1.5 w-1.5 rounded-full bg-foreground/50" /> connected</span>
                   <span>utf-8</span>
                 </div>
                 <div>ln 9, col 42</div>
@@ -247,7 +245,7 @@ export function Hero() {
           </div>
 
           {/* Stats */}
-          <motion.div className="mt-6 grid grid-cols-2 gap-3" style={{ y: yStats }}>
+          <motion.div className="mt-8 grid grid-cols-2 gap-4" style={{ y: yStats }}>
             <StatCard value={12} suffix="+" label="Projects" delay={400} />
             <StatCard value={18} suffix="+" label="Technologies" delay={500} />
             <StatCard value={420} suffix="+" label="GitHub Contribs" delay={600} />

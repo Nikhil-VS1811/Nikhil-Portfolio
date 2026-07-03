@@ -24,14 +24,13 @@ export function Section({
   return (
     <section
       id={id}
-      className={`relative py-32 md:py-44 scroll-mt-28 ${tone === "alt" ? "section-alt" : ""}`}
+      className={`relative py-36 md:py-56 scroll-mt-28 ${tone === "alt" ? "section-alt" : ""}`}
     >
-      {/* Smooth transition dividers */}
-      <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-background/0 via-background/0 to-transparent" />
-      <div aria-hidden className="pointer-events-none absolute inset-x-0 -top-px h-px bg-gradient-to-r from-transparent via-border to-transparent opacity-60" />
+      {/* Hairline transition */}
+      <div aria-hidden className="pointer-events-none absolute inset-x-0 -top-px h-px bg-gradient-to-r from-transparent via-border to-transparent opacity-50" />
 
       <motion.div
-        className={`mx-auto ${maxW} px-6 md:px-10`}
+        className={`mx-auto ${maxW} px-6 md:px-12`}
         variants={stagger(0.12, 0)}
         initial="hidden"
         whileInView="show"
@@ -39,17 +38,16 @@ export function Section({
       >
         <motion.div
           variants={fadeUp}
-          className="mb-20 md:mb-24 max-w-2xl"
+          className="mb-24 md:mb-32 max-w-3xl"
         >
-          <div className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.22em] text-primary/90 mb-6">
-            <span className="h-1 w-1 rounded-full bg-primary shadow-[0_0_0_3px_color-mix(in_oklab,var(--primary)_20%,transparent)]" />
+          <div className="font-mono text-[11px] uppercase tracking-[0.24em] text-muted-foreground/80 mb-8">
             {eyebrow}
           </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-medium tracking-[-0.02em] text-foreground leading-[1.05]">
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-medium tracking-[-0.03em] text-foreground leading-[1.02]">
             {title}
           </h2>
           {description && (
-            <p className="mt-6 text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl">
+            <p className="mt-8 text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl">
               {description}
             </p>
           )}
