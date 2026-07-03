@@ -26,10 +26,10 @@ function Index() {
       {/* Global ambient background */}
       <div aria-hidden className="pointer-events-none fixed inset-0 -z-10">
         <div
-          className="absolute inset-0 opacity-[0.6]"
+          className="absolute inset-0 opacity-[0.9]"
           style={{
             background:
-              "radial-gradient(1200px 600px at 50% -10%, color-mix(in oklab, var(--primary) 12%, transparent), transparent 60%), radial-gradient(900px 550px at 100% 30%, color-mix(in oklab, var(--secondary) 10%, transparent), transparent 60%), radial-gradient(700px 500px at 0% 70%, color-mix(in oklab, var(--primary) 6%, transparent), transparent 60%)",
+              "radial-gradient(1000px 500px at 50% -10%, color-mix(in oklab, white 4%, transparent), transparent 65%)",
           }}
         />
       </div>
