@@ -62,32 +62,34 @@
 }
 
 :root {
-  --radius: 0.75rem;
+  --radius: 0.875rem;
   /*
-   * Premium developer portfolio palette
-   * bg     #050816   surface #0B1120
-   * cyan   #38BDF8   indigo  #4F46E5
+   * Locked palette — treat as source of truth.
+   *   bg        #050816
+   *   surface   #0F172A
+   *   accent    #38BDF8
+   *   text      #F8FAFC
+   *   muted     #94A3B8
    */
-  --background: oklch(0.09 0.030 268);
-  --foreground: oklch(0.985 0.005 250);
-  --card: oklch(0.145 0.035 262);
-  --card-foreground: oklch(0.985 0.005 250);
-  --popover: oklch(0.145 0.035 262);
-  --popover-foreground: oklch(0.985 0.005 250);
-  /* Monochrome accent — near-white, used sparingly */
-  --primary: oklch(0.97 0.004 250);
-  --primary-foreground: oklch(0.09 0.030 268);
-  --secondary: oklch(0.72 0.02 255);
-  --secondary-foreground: oklch(0.09 0.030 268);
-  --muted: oklch(0.20 0.028 262);
-  --muted-foreground: oklch(0.70 0.018 255);
-  --accent: oklch(0.22 0.030 262);
-  --accent-foreground: oklch(0.985 0.005 250);
+  --background: oklch(0.09 0.035 268);            /* #050816 */
+  --foreground: oklch(0.985 0.004 250);           /* #F8FAFC */
+  --card: oklch(0.204 0.037 265);                 /* #0F172A */
+  --card-foreground: oklch(0.985 0.004 250);
+  --popover: oklch(0.204 0.037 265);
+  --popover-foreground: oklch(0.985 0.004 250);
+  --primary: oklch(0.79 0.135 226);               /* #38BDF8 */
+  --primary-foreground: oklch(0.09 0.035 268);
+  --secondary: oklch(0.204 0.037 265);
+  --secondary-foreground: oklch(0.985 0.004 250);
+  --muted: oklch(0.204 0.037 265);
+  --muted-foreground: oklch(0.70 0.028 258);      /* #94A3B8 */
+  --accent: oklch(0.79 0.135 226);
+  --accent-foreground: oklch(0.09 0.035 268);
   --destructive: oklch(0.62 0.21 25);
   --destructive-foreground: oklch(0.98 0 0);
-  --border: oklch(1 0 0 / 6%);
-  --input: oklch(1 0 0 / 8%);
-  --ring: oklch(1 0 0 / 20%);
+  --border: oklch(1 0 0 / 7%);
+  --input: oklch(1 0 0 / 9%);
+  --ring: oklch(0.79 0.135 226 / 40%);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -169,58 +171,56 @@
 }
 
 @layer utilities {
-  /* Faint grid background — Linear/Vercel style */
+  /* Vercel-style faint grid, used sparingly */
   .bg-grid {
     background-image:
-      linear-gradient(to right, color-mix(in oklab, var(--foreground) 3.5%, transparent) 1px, transparent 1px),
-      linear-gradient(to bottom, color-mix(in oklab, var(--foreground) 3.5%, transparent) 1px, transparent 1px);
-    background-size: 72px 72px;
+      linear-gradient(to right, color-mix(in oklab, var(--foreground) 4%, transparent) 1px, transparent 1px),
+      linear-gradient(to bottom, color-mix(in oklab, var(--foreground) 4%, transparent) 1px, transparent 1px);
+    background-size: 80px 80px;
   }
   .bg-grid-fade {
-    -webkit-mask-image: radial-gradient(ellipse 60% 50% at 50% 30%, #000 30%, transparent 78%);
-            mask-image: radial-gradient(ellipse 60% 50% at 50% 30%, #000 30%, transparent 78%);
+    -webkit-mask-image: radial-gradient(ellipse 55% 45% at 50% 20%, #000 20%, transparent 80%);
+            mask-image: radial-gradient(ellipse 55% 45% at 50% 20%, #000 20%, transparent 80%);
   }
-  /* Monochrome text emphasis — kept for compatibility */
   .text-gradient {
     color: var(--foreground);
   }
-  /* Very subtle ambient wash — no color, just light */
   .orb {
     background: radial-gradient(
       closest-side,
-      color-mix(in oklab, white 6%, transparent),
+      color-mix(in oklab, var(--primary) 14%, transparent),
       transparent 70%
     );
-    filter: blur(70px);
+    filter: blur(90px);
   }
   .orb-indigo {
     background: radial-gradient(
       closest-side,
-      color-mix(in oklab, white 4%, transparent),
+      color-mix(in oklab, var(--primary) 8%, transparent),
       transparent 70%
     );
-    filter: blur(80px);
+    filter: blur(100px);
   }
   /* Card surface used across sections */
   .surface {
-    background-color: color-mix(in oklab, var(--card) 40%, transparent);
-    border: 1px solid color-mix(in oklab, var(--border) 90%, transparent);
+    background-color: color-mix(in oklab, var(--card) 55%, transparent);
+    border: 1px solid color-mix(in oklab, var(--border) 100%, transparent);
     border-radius: 1rem;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(8px);
     box-shadow:
       0 1px 0 0 color-mix(in oklab, white 3%, transparent) inset,
-      0 20px 40px -30px color-mix(in oklab, black 60%, transparent);
+      0 30px 60px -40px color-mix(in oklab, black 80%, transparent);
   }
   .surface-hover {
     transition: transform .5s cubic-bezier(.2,.7,.2,1), border-color .4s ease, background-color .4s ease, box-shadow .5s ease;
   }
   .surface-hover:hover {
     transform: translateY(-2px);
-    border-color: color-mix(in oklab, white 14%, var(--border));
-    background-color: color-mix(in oklab, var(--card) 55%, transparent);
+    border-color: color-mix(in oklab, white 12%, var(--border));
+    background-color: color-mix(in oklab, var(--card) 70%, transparent);
     box-shadow:
       0 1px 0 0 color-mix(in oklab, white 5%, transparent) inset,
-      0 30px 60px -30px color-mix(in oklab, black 70%, transparent);
+      0 40px 80px -40px color-mix(in oklab, black 80%, transparent);
   }
   /* Hairline divider */
   .hairline {
@@ -321,7 +321,7 @@
 main > section:nth-of-type(even):not(#hero) {
   position: relative;
   background:
-    linear-gradient(to bottom, color-mix(in oklab, var(--card) 22%, transparent), transparent 45%, color-mix(in oklab, var(--card) 18%, transparent));
+    linear-gradient(to bottom, color-mix(in oklab, var(--card) 28%, transparent), transparent 50%, color-mix(in oklab, var(--card) 22%, transparent));
 }
 .section-alt::before,
 .section-alt::after,
@@ -342,21 +342,21 @@ main > section:nth-of-type(even):not(#hero)::after { bottom: 0; }
 /* Elegant card — soft border, gentle shadow, subtle lift on hover */
 .card-elegant {
   position: relative;
-  background-color: color-mix(in oklab, var(--card) 40%, transparent);
-  border: 1px solid color-mix(in oklab, var(--border) 90%, transparent);
+  background-color: color-mix(in oklab, var(--card) 55%, transparent);
+  border: 1px solid color-mix(in oklab, var(--border) 100%, transparent);
   border-radius: 1rem;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   box-shadow:
     0 1px 0 0 color-mix(in oklab, white 3%, transparent) inset,
-    0 20px 40px -30px color-mix(in oklab, black 60%, transparent);
+    0 30px 60px -40px color-mix(in oklab, black 80%, transparent);
   transition: transform .5s cubic-bezier(.2,.7,.2,1), border-color .4s ease, box-shadow .5s ease, background-color .4s ease;
 }
 .card-elegant:hover {
   transform: translateY(-2px);
-  border-color: color-mix(in oklab, white 14%, var(--border));
-  background-color: color-mix(in oklab, var(--card) 55%, transparent);
+  border-color: color-mix(in oklab, white 12%, var(--border));
+  background-color: color-mix(in oklab, var(--card) 70%, transparent);
   box-shadow:
     0 1px 0 0 color-mix(in oklab, white 5%, transparent) inset,
-    0 30px 60px -30px color-mix(in oklab, black 70%, transparent);
+    0 40px 80px -40px color-mix(in oklab, black 80%, transparent);
 }
