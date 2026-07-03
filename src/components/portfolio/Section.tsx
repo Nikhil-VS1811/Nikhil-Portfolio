@@ -24,7 +24,7 @@ export function Section({
   return (
     <section
       id={id}
-      className={`relative py-36 md:py-56 scroll-mt-28 ${tone === "alt" ? "section-alt" : ""}`}
+      className={`relative py-40 md:py-64 scroll-mt-28 ${tone === "alt" ? "section-alt" : ""}`}
     >
       {/* Hairline transition */}
       <div aria-hidden className="pointer-events-none absolute inset-x-0 -top-px h-px bg-gradient-to-r from-transparent via-border to-transparent opacity-50" />
