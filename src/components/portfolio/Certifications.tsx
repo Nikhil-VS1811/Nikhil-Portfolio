@@ -63,7 +63,13 @@ const groups: Group[] = [
   {
     provider: "DeepLearning.AI",
     Logo: DeepLearningLogo,
-    items: [{ title: "Machine Learning Specialization", year: "2024" }],
+    items: [
+      {
+        title: "Supervised Machine Learning: Regression and Classification",
+        year: "2026",
+        url: "https://coursera.org/verify/3TCPGTEGOYQB",
+      },
+    ],
   },
 ];
 
