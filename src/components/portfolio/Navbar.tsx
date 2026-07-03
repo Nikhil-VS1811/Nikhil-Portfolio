@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Download, Github, Moon, Sun } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { easeOut } from "./motion";
 
 const links = [
   { href: "#hero", label: "Home", id: "hero" },
@@ -98,8 +100,15 @@ export function Navbar() {
   }, [open]);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 px-3 sm:px-6 pt-3 sm:pt-5">
-      <nav
+    <motion.header
+      initial={{ y: -24, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.7, ease: easeOut, delay: 0.1 }}
+      className="fixed inset-x-0 top-0 z-50 px-3 sm:px-6 pt-3 sm:pt-5"
+    >
+      <motion.nav
+        layout
+        transition={{ duration: 0.4, ease: easeOut }}
         className={`mx-auto max-w-6xl h-14 pl-4 pr-2 flex items-center justify-between rounded-full transition-all duration-300 ${
           scrolled || open
             ? "bg-background/60 border border-border backdrop-blur-2xl shadow-[0_1px_0_0_rgba(255,255,255,0.06)_inset,0_20px_50px_-25px_rgba(0,0,0,0.7)]"
@@ -133,8 +142,10 @@ export function Navbar() {
                 >
                   <span className="relative z-10">{l.label}</span>
                   {isActive && (
-                    <span
+                    <motion.span
+                      layoutId="nav-active-pill"
                       aria-hidden
+                      transition={{ type: "spring", stiffness: 380, damping: 34, mass: 0.7 }}
                       className="absolute inset-0 rounded-full bg-foreground/[0.06] border border-border"
                     />
                   )}
@@ -150,23 +161,29 @@ export function Navbar() {
 
         {/* Right actions */}
         <div className="flex items-center gap-1.5 sm:gap-2 pr-1">
-          <a
+          <motion.a
+            whileHover={{ y: -1, transition: { duration: 0.2, ease: easeOut } }}
+            whileTap={{ scale: 0.96 }}
             href="/resume.pdf"
             download
-            className="hidden sm:inline-flex items-center gap-1.5 text-[12.5px] font-medium h-9 px-3.5 rounded-full bg-foreground text-background hover:bg-foreground/90 hover:-translate-y-[1px] transition-all duration-200 shrink-0"
+            className="hidden sm:inline-flex items-center gap-1.5 text-[12.5px] font-medium h-9 px-3.5 rounded-full bg-foreground text-background hover:bg-foreground/90 transition-colors duration-200 shrink-0"
           >
             <Download className="w-3.5 h-3.5" />
             Resume
-          </a>
-          <button
+          </motion.a>
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.92 }}
             aria-label="Toggle theme"
             onClick={toggleTheme}
             className="relative inline-flex h-9 w-9 items-center justify-center rounded-full border border-border/70 bg-card/40 text-foreground/80 hover:text-foreground hover:border-primary/50 hover:bg-card/70 transition-colors"
           >
             <Sun className={`w-4 h-4 absolute transition-all duration-300 ${isDark ? "opacity-0 -rotate-90 scale-75" : "opacity-100 rotate-0 scale-100"}`} />
             <Moon className={`w-4 h-4 absolute transition-all duration-300 ${isDark ? "opacity-100 rotate-0 scale-100" : "opacity-0 rotate-90 scale-75"}`} />
-          </button>
-          <a
+          </motion.button>
+          <motion.a
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.92 }}
             href="https://github.com/Nikhil-VS1811"
             target="_blank"
             rel="noreferrer"
@@ -174,7 +191,7 @@ export function Navbar() {
             className="hidden sm:inline-flex h-9 w-9 items-center justify-center rounded-full border border-border/70 bg-card/40 text-foreground/80 hover:text-foreground hover:border-primary/50 hover:bg-card/70 transition-colors"
           >
             <Github className="w-4 h-4" />
-          </a>
+          </motion.a>
 
           {/* Mobile hamburger */}
           <button
@@ -189,16 +206,21 @@ export function Navbar() {
             <span className={`block w-4 h-[2px] bg-current rounded-full transition-all duration-300 ${open ? "-rotate-45 -translate-y-[3px]" : "translate-y-[3px]"}`} />
           </button>
         </div>
-      </nav>
+      </motion.nav>
 
       {/* Mobile overlay menu */}
-      <div
-        ref={menuRef}
-        className={`xl:hidden mx-auto mt-2 max-w-6xl rounded-2xl border bg-background/80 backdrop-blur-2xl transition-all duration-300 overflow-hidden ${
-          open ? "max-h-[40rem] opacity-100 border-border" : "max-h-0 opacity-0 border-transparent"
-        }`}
-      >
-        <ul className="flex flex-col p-3 gap-1">
+      <AnimatePresence initial={false}>
+        {open && (
+          <motion.div
+            ref={menuRef}
+            key="mobile-menu"
+            initial={{ opacity: 0, y: -8, height: 0 }}
+            animate={{ opacity: 1, y: 0, height: "auto" }}
+            exit={{ opacity: 0, y: -8, height: 0 }}
+            transition={{ duration: 0.35, ease: easeOut }}
+            className="xl:hidden mx-auto mt-2 max-w-6xl rounded-2xl border border-border bg-background/80 backdrop-blur-2xl overflow-hidden"
+          >
+            <ul className="flex flex-col p-3 gap-1">
           {links.map((l) => (
             <li key={l.href}>
               <a
@@ -234,8 +256,10 @@ export function Navbar() {
               <Github className="w-4 h-4" />
             </a>
           </li>
-        </ul>
-      </div>
-    </header>
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.header>
   );
 }
