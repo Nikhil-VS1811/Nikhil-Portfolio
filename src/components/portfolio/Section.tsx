@@ -38,16 +38,16 @@ export function Section({
       >
         <motion.div
           variants={fadeUp}
-          className="mb-24 md:mb-32 max-w-3xl"
+          className="mb-24 md:mb-32"
         >
-          <div className="font-mono text-[11px] uppercase tracking-[0.24em] text-muted-foreground/80 mb-8">
+          <div className="text-[12px] font-medium uppercase tracking-[0.2em] text-muted-foreground/70 mb-6">
             {eyebrow}
           </div>
-          <h2 className="text-5xl md:text-6xl lg:text-7xl font-medium tracking-[-0.03em] text-foreground leading-[1.02]">
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-[-0.035em] text-foreground leading-[1.05] max-w-[18ch]">
             {title}
           </h2>
           {description && (
-            <p className="mt-8 text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl">
+            <p className="mt-8 text-[18px] font-normal text-muted-foreground leading-[1.75] max-w-[68ch]">
               {description}
             </p>
           )}

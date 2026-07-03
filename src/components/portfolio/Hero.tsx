@@ -131,17 +131,17 @@ export function Hero() {
             <span className="font-mono tracking-wide">Available for internships & collaborations</span>
           </motion.div>
 
-          <motion.h1 variants={fadeUp} className="mt-8 text-[44px] leading-[1.0] sm:text-6xl md:text-7xl lg:text-[80px] font-medium tracking-[-0.04em] text-foreground">
+          <motion.h1 variants={fadeUp} className="mt-8 text-[44px] leading-[1.05] sm:text-6xl md:text-7xl lg:text-[80px] font-bold tracking-[-0.04em] text-foreground">
             <span className="block">AI Engineer</span>
-            <span className="block text-muted-foreground/70">
-              & <span className="font-serif italic font-normal">Full Stack</span>
+            <span className="block text-muted-foreground/70 font-medium">
+              &amp; Full Stack
             </span>
-            <span className="block font-serif italic font-normal">
+            <span className="block">
               Developer<span className="text-primary">.</span>
             </span>
           </motion.h1>
 
-          <motion.p variants={fadeUp} className="mt-9 max-w-xl text-lg text-muted-foreground leading-relaxed">
+          <motion.p variants={fadeUp} className="mt-9 max-w-[62ch] text-[18px] text-muted-foreground leading-[1.75]">
             I'm Nikhil VS — I build scalable AI-powered web applications,
             developer tools, and modern full-stack products. From RAG pipelines
             to production APIs, I ship end-to-end.
