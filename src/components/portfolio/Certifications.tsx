@@ -1,3 +1,4 @@
+import type { ComponentType } from "react";
 import { Section } from "./Section";
 
 const OracleLogo = () => (
@@ -34,7 +35,7 @@ type Cert = {
 
 type Group = {
   provider: string;
-  Logo: () => JSX.Element;
+  Logo: ComponentType;
   items: Cert[];
 };
 
