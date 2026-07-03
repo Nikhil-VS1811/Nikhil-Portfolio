@@ -1,4 +1,4 @@
-import { Send, Sparkles, Code2, ShieldAlert, MapPin, GitBranch, Activity, FileText } from "lucide-react";
+import { Send, Sparkles, Code2, ShieldAlert, MapPin, GitBranch, Activity, FileText, Workflow, Play, Database, Webhook, Bot } from "lucide-react";
 
 /**
  * Consistent presentation: each preview is a rounded "browser" frame with
@@ -252,6 +252,94 @@ export function MapPreview() {
             <div className="flex items-center gap-1"><span className="w-1.5 h-1.5 rounded-full bg-yellow-400" /><span className="text-[8px] font-mono text-muted-foreground">infra</span></div>
             <div className="flex items-center gap-1"><span className="w-1.5 h-1.5 rounded-full bg-emerald-400" /><span className="text-[8px] font-mono text-muted-foreground">resolved</span></div>
           </div>
+        </div>
+      </div>
+    </Frame>
+  );
+}
+
+export function WorkflowPreview() {
+  const nodes = [
+    { x: "6%", y: "22%", label: "Webhook", Icon: Webhook, tone: "primary" },
+    { x: "36%", y: "12%", label: "GPT-4", Icon: Bot, tone: "emerald" },
+    { x: "36%", y: "62%", label: "Postgres", Icon: Database, tone: "yellow" },
+    { x: "68%", y: "38%", label: "Transform", Icon: Sparkles, tone: "primary" },
+  ] as const;
+  const toneClass = (t: string) =>
+    t === "emerald"
+      ? "text-emerald-400 border-emerald-500/40 bg-emerald-500/10"
+      : t === "yellow"
+      ? "text-yellow-400 border-yellow-500/40 bg-yellow-500/10"
+      : "text-primary border-primary/40 bg-primary/10";
+  return (
+    <Frame url="workflow-builder.app/editor">
+      <div className="h-full flex flex-col bg-gradient-to-b from-background to-muted/10">
+        {/* Header */}
+        <div className="px-3 py-1.5 border-b border-border/60 flex items-center gap-2">
+          <Workflow className="w-3 h-3 text-primary" strokeWidth={2} />
+          <span className="text-[9px] font-medium text-foreground">Workflow Builder</span>
+          <div className="ml-auto flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/30">
+            <span className="w-1 h-1 rounded-full bg-emerald-400 animate-pulse" />
+            <span className="text-[7px] font-mono text-emerald-400">running</span>
+          </div>
+        </div>
+
+        {/* Toolbar */}
+        <div className="px-2.5 py-1 border-b border-border/40 flex items-center gap-2">
+          <span className="text-[8px] font-mono text-foreground/80 truncate">flows / lead-qualifier · v3</span>
+          <div className="ml-auto flex items-center gap-1 px-1.5 py-0.5 rounded-md bg-primary/15 border border-primary/30">
+            <Play className="w-2 h-2 text-primary" strokeWidth={2.5} />
+            <span className="text-[7px] font-mono text-primary">execute</span>
+          </div>
+        </div>
+
+        {/* Canvas */}
+        <div className="flex-1 relative min-h-0 overflow-hidden">
+          {/* dot grid */}
+          <div
+            className="absolute inset-0 opacity-40"
+            style={{
+              backgroundImage:
+                "radial-gradient(circle, hsl(var(--border)/0.7) 1px, transparent 1px)",
+              backgroundSize: "12px 12px",
+            }}
+          />
+
+          {/* connector lines */}
+          <svg className="absolute inset-0 w-full h-full" preserveAspectRatio="none" viewBox="0 0 100 100">
+            <defs>
+              <linearGradient id="wf-line" x1="0" x2="1" y1="0" y2="0">
+                <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.5" />
+                <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.9" />
+              </linearGradient>
+            </defs>
+            <path d="M14 26 C 24 26, 30 16, 40 16" stroke="url(#wf-line)" strokeWidth="0.6" fill="none" />
+            <path d="M14 26 C 24 26, 30 66, 40 66" stroke="url(#wf-line)" strokeWidth="0.6" fill="none" />
+            <path d="M50 16 C 60 16, 62 42, 72 42" stroke="url(#wf-line)" strokeWidth="0.6" fill="none" />
+            <path d="M50 66 C 60 66, 62 42, 72 42" stroke="url(#wf-line)" strokeWidth="0.6" fill="none" />
+          </svg>
+
+          {/* nodes */}
+          {nodes.map((n) => (
+            <div
+              key={n.label}
+              className="absolute -translate-x-1/2 -translate-y-1/2"
+              style={{ left: n.x, top: n.y }}
+            >
+              <div className={`flex items-center gap-1 px-1.5 py-1 rounded-md border backdrop-blur-sm ${toneClass(n.tone)}`}>
+                <n.Icon className="w-2.5 h-2.5" strokeWidth={2} />
+                <span className="text-[8px] font-mono">{n.label}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Footer: execution log */}
+        <div className="px-2.5 py-1.5 border-t border-border/60 flex items-center gap-2">
+          <Activity className="w-2.5 h-2.5 text-primary" strokeWidth={2} />
+          <span className="text-[7px] font-mono text-muted-foreground">logs</span>
+          <span className="text-[7px] font-mono text-emerald-400">webhook → gpt-4 · 218ms</span>
+          <span className="ml-auto text-[7px] font-mono text-muted-foreground">3 nodes · ok</span>
         </div>
       </div>
     </Frame>

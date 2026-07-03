@@ -1,10 +1,9 @@
 import { Section } from "./Section";
 import { Github, ExternalLink } from "lucide-react";
 import {
-  ChatPreview,
   CodeReviewPreview,
   FraudPreview,
-  MapPreview,
+  WorkflowPreview,
 } from "./ProjectPreviews";
 
 type Project = {
@@ -18,6 +17,29 @@ type Project = {
 };
 
 const projects: Project[] = [
+  {
+    name: "Node-Based Workflow Builder",
+    description:
+      "An AI-powered visual workflow automation platform inspired by n8n that enables users to build complex automations using a drag-and-drop node editor. Users can connect AI models, APIs, databases, webhooks, and custom logic into reusable workflows. Features include authentication, workflow execution engine, scheduling, execution history, real-time logs, reusable templates, versioning, and visual debugging.",
+    stack: [
+      "React",
+      "TypeScript",
+      "FastAPI",
+      "Python",
+      "PostgreSQL",
+      "Redis",
+      "Docker",
+      "WebSockets",
+      "OpenAI API",
+      "Gemini API",
+      "JWT",
+      "Tailwind CSS",
+    ],
+    github: "https://github.com/Nikhil-VS1811/node-workflow-builder",
+    demo: "https://node-workflow-builder.vercel.app/",
+    Preview: WorkflowPreview,
+    featured: true,
+  },
   {
     name: "AI Code Reviewer",
     description:
@@ -41,7 +63,6 @@ const projects: Project[] = [
     github: "https://github.com/Nikhil-VS1811/AI-Code-Reviewer",
     demo: "https://ai-code-reviewer-seven-brown.vercel.app/",
     Preview: CodeReviewPreview,
-    featured: true,
   },
   {
     name: "Fraud Detection System",
@@ -59,24 +80,6 @@ const projects: Project[] = [
     github: "https://github.com/Nikhil-VS1811/fraud-detection-system",
     demo: "https://fraud-frontend-vxzh.onrender.com",
     Preview: FraudPreview,
-  },
-  {
-    name: "FeedMap AI",
-    description:
-      "AI-powered community feedback and issue-mapping platform that collects reports, categorizes them automatically and visualizes trends through location-aware analytics.",
-    stack: ["React", "FastAPI", "PostgreSQL", "OpenAI API", "Leaflet", "Docker"],
-    github: "https://github.com/Nikhil-VS1811/FeedMap-AI",
-    demo: "https://feed-map-ai.vercel.app/",
-    Preview: MapPreview,
-  },
-  {
-    name: "GeetAI",
-    description:
-      "AI-driven wellness companion that provides contextual Bhagavad Gita guidance based on user moods and concerns, combining modern AI with spiritual teachings.",
-    stack: ["React", "Flask", "SQLAlchemy", "PostgreSQL", "OpenAI API", "JWT"],
-    github: "https://github.com/Nikhil-VS1811/Geet-AI",
-    demo: "https://geet-ai-9u4c.onrender.com/",
-    Preview: ChatPreview,
   },
 ];
 
