@@ -211,16 +211,26 @@
   }
   /* Card surface used across sections */
   .surface {
-    background-color: color-mix(in oklab, var(--card) 70%, transparent);
-    border: 1px solid var(--border);
-    backdrop-filter: blur(12px);
+    background-color: color-mix(in oklab, var(--card) 55%, transparent);
+    border: 1px solid color-mix(in oklab, var(--border) 70%, transparent);
+    border-radius: 1.25rem;
+    backdrop-filter: blur(14px);
+    box-shadow:
+      0 1px 0 0 color-mix(in oklab, white 4%, transparent) inset,
+      0 30px 60px -30px color-mix(in oklab, black 60%, transparent),
+      0 8px 20px -14px color-mix(in oklab, black 40%, transparent);
   }
   .surface-hover {
-    transition: border-color .3s ease, background-color .3s ease, transform .3s ease;
+    transition: transform .5s cubic-bezier(.2,.7,.2,1), border-color .4s ease, background-color .4s ease, box-shadow .5s ease;
   }
   .surface-hover:hover {
-    border-color: color-mix(in oklab, var(--primary) 40%, var(--border));
-    background-color: color-mix(in oklab, var(--card) 85%, transparent);
+    transform: translateY(-3px);
+    border-color: color-mix(in oklab, var(--primary) 35%, var(--border));
+    background-color: color-mix(in oklab, var(--card) 70%, transparent);
+    box-shadow:
+      0 1px 0 0 color-mix(in oklab, white 6%, transparent) inset,
+      0 40px 80px -30px color-mix(in oklab, var(--primary) 25%, transparent),
+      0 12px 30px -14px color-mix(in oklab, black 50%, transparent);
   }
   /* Hairline divider */
   .hairline {
