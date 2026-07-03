@@ -1,11 +1,11 @@
 import type { ComponentType } from "react";
 import { Section } from "./Section";
 import googleLogo from "@/assets/google-logo.png.asset.json";
+import oracleLogo from "@/assets/oracle-logo.png.asset.json";
+import deeplearningLogo from "@/assets/deeplearning-logo.png.asset.json";
 
 const OracleLogo = () => (
-  <svg viewBox="0 0 128 40" className="h-5 w-auto" aria-hidden="true">
-    <ellipse cx="64" cy="20" rx="46" ry="14" fill="none" stroke="#F80000" strokeWidth="6" />
-  </svg>
+  <img src={oracleLogo.url} alt="Oracle" className="h-6 w-auto object-contain" />
 );
 
 const GoogleLogo = () => (
@@ -13,13 +13,7 @@ const GoogleLogo = () => (
 );
 
 const DeepLearningLogo = () => (
-  <svg viewBox="0 0 40 40" className="h-6 w-auto" aria-hidden="true">
-    <circle cx="20" cy="20" r="18" fill="none" stroke="#0FA0CE" strokeWidth="2.5" />
-    <circle cx="12" cy="14" r="2" fill="#0FA0CE" />
-    <circle cx="12" cy="26" r="2" fill="#0FA0CE" />
-    <circle cx="28" cy="20" r="2" fill="#0FA0CE" />
-    <path stroke="#0FA0CE" strokeWidth="1.5" d="M12 14l16 6M12 26l16-6" />
-  </svg>
+  <img src={deeplearningLogo.url} alt="DeepLearning.AI" className="h-6 w-6 object-contain" />
 );
 
 type Cert = {
