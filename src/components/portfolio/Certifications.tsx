@@ -20,6 +20,7 @@ type Cert = {
   title: string;
   year: string;
   url?: string;
+  credentialId?: string;
 };
 
 type Group = {
@@ -33,8 +34,16 @@ const groups: Group[] = [
     provider: "Oracle",
     Logo: OracleLogo,
     items: [
-      { title: "Oracle Cloud Infrastructure 2025 AI Foundations Associate", year: "2025" },
-      { title: "Oracle Cloud Infrastructure 2025 Generative AI Professional", year: "2025" },
+      {
+        title: "Oracle Cloud Infrastructure 2025 Certified AI Foundations Associate",
+        year: "2025",
+        credentialId: "322758747OCI25AICFA",
+      },
+      {
+        title: "Oracle Cloud Infrastructure 2025 Certified Generative AI Professional",
+        year: "2025",
+        credentialId: "322758747OCI25GAIOCP",
+      },
       { title: "Oracle Cloud Infrastructure 2025 Data Science Professional", year: "2025" },
     ],
   },
@@ -110,6 +119,13 @@ export function Certifications() {
                           ↗
                         </span>
                       </a>
+                    ) : c.credentialId ? (
+                      <div className="flex flex-col gap-1">
+                        <span className="text-xs text-muted-foreground">Credential ID</span>
+                        <span className="font-mono text-xs text-foreground/90 break-all">
+                          {c.credentialId}
+                        </span>
+                      </div>
                     ) : (
                       <button
                         disabled
