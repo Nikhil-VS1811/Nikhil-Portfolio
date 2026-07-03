@@ -244,3 +244,45 @@
   0%, 100% { opacity: 0.35; }
   50% { opacity: 0.55; }
 }
+
+/* Alternating section band — subtle radial + hairline wash */
+.section-alt {
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%, color-mix(in oklab, var(--primary) 6%, transparent), transparent 70%),
+    linear-gradient(to bottom, color-mix(in oklab, var(--card) 30%, transparent), transparent 40%, color-mix(in oklab, var(--card) 25%, transparent));
+}
+.section-alt::before,
+.section-alt::after {
+  content: "";
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, color-mix(in oklab, var(--foreground) 8%, transparent), transparent);
+}
+.section-alt::before { top: 0; }
+.section-alt::after { bottom: 0; }
+
+/* Elegant card — soft border, gentle shadow, subtle lift on hover */
+.card-elegant {
+  position: relative;
+  background-color: color-mix(in oklab, var(--card) 55%, transparent);
+  border: 1px solid color-mix(in oklab, var(--border) 70%, transparent);
+  border-radius: 1.25rem;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow:
+    0 1px 0 0 color-mix(in oklab, white 4%, transparent) inset,
+    0 30px 60px -30px color-mix(in oklab, black 60%, transparent),
+    0 8px 20px -12px color-mix(in oklab, black 40%, transparent);
+  transition: transform .5s cubic-bezier(.2,.7,.2,1), border-color .4s ease, box-shadow .5s ease, background-color .4s ease;
+}
+.card-elegant:hover {
+  transform: translateY(-3px);
+  border-color: color-mix(in oklab, var(--primary) 35%, var(--border));
+  background-color: color-mix(in oklab, var(--card) 70%, transparent);
+  box-shadow:
+    0 1px 0 0 color-mix(in oklab, white 6%, transparent) inset,
+    0 40px 80px -30px color-mix(in oklab, var(--primary) 25%, transparent),
+    0 12px 30px -14px color-mix(in oklab, black 50%, transparent);
+}
