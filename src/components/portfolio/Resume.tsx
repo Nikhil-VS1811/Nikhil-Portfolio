@@ -41,11 +41,11 @@ export function Resume() {
       title="Snapshot of my work."
       description="A condensed overview of my background, stack, and the projects I'm most proud of. Download the full PDF for sharing."
     >
-      <div className="flex flex-wrap items-center gap-3 mb-10">
+      <div className="flex flex-wrap items-center gap-3 mb-12">
         <a
           href="/resume.pdf"
           download
-          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-border text-sm font-medium text-foreground hover:border-primary hover:text-primary transition-colors"
+          className="inline-flex items-center gap-2 h-11 px-5 rounded-full bg-foreground text-background text-sm font-medium hover:bg-foreground/90 transition-colors"
         >
           <Download className="w-4 h-4" />
           Download Resume (PDF)
@@ -60,9 +60,9 @@ export function Resume() {
         </a>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-6">
-        <div className="p-7 rounded-2xl border border-border bg-card">
-          <h3 className="font-mono text-xs uppercase tracking-wider text-primary mb-4">
+      <div className="grid md:grid-cols-2 gap-5">
+        <div className="surface rounded-2xl p-7">
+          <h3 className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground mb-4">
             Summary
           </h3>
           <p className="text-muted-foreground text-sm leading-relaxed">
@@ -72,7 +72,8 @@ export function Resume() {
             Gemini. Focused on taking ideas from concept to deployment.
           </p>
 
-          <h3 className="font-mono text-xs uppercase tracking-wider text-primary mt-8 mb-4">
+          <div className="hairline my-7" />
+          <h3 className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground mb-4">
             Education
           </h3>
           <div className="text-foreground text-sm font-medium">
@@ -88,8 +89,8 @@ export function Resume() {
           </p>
         </div>
 
-        <div className="p-7 rounded-2xl border border-border bg-card">
-          <h3 className="font-mono text-xs uppercase tracking-wider text-primary mb-4">
+        <div className="surface rounded-2xl p-7">
+          <h3 className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground mb-4">
             Technical Skills
           </h3>
           <ul className="space-y-3">
@@ -102,8 +103,8 @@ export function Resume() {
           </ul>
         </div>
 
-        <div className="p-7 rounded-2xl border border-border bg-card md:col-span-2">
-          <h3 className="font-mono text-xs uppercase tracking-wider text-primary mb-5">
+        <div className="surface rounded-2xl p-7 md:col-span-2">
+          <h3 className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground mb-5">
             Highlighted Projects
           </h3>
           <ul className="space-y-5">
