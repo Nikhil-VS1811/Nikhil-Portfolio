@@ -1,4 +1,6 @@
 import { Section } from "./Section";
+import { motion } from "framer-motion";
+import { fadeUp, stagger, viewportOnce, easeOut } from "./motion";
 
 const groups = [
   {
@@ -22,11 +24,19 @@ const groups = [
 export function Skills() {
   return (
     <Section id="skills" eyebrow="Toolkit" title="Skills & technologies.">
-      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
+      <motion.div
+        className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5"
+        variants={stagger(0.09)}
+        initial="hidden"
+        whileInView="show"
+        viewport={viewportOnce}
+      >
         {groups.map((g) => (
-          <div
+          <motion.div
             key={g.title}
-            className="surface surface-hover rounded-2xl p-6"
+            variants={fadeUp}
+            whileHover={{ y: -4, transition: { duration: 0.35, ease: easeOut } }}
+            className="gradient-border surface rounded-2xl p-6"
           >
             <div className="flex items-center gap-2 mb-5">
               <span className="h-1 w-1 rounded-full bg-primary" />
@@ -41,9 +51,9 @@ export function Skills() {
                 </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </Section>
   );
 }

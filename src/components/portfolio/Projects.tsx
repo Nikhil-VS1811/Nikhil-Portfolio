@@ -1,5 +1,7 @@
 import { Section } from "./Section";
 import { Github, ExternalLink } from "lucide-react";
+import { motion } from "framer-motion";
+import { fadeUp, stagger, viewportOnce, buttonHover, easeOut } from "./motion";
 import {
   ChatPreview,
   CodeReviewPreview,
@@ -88,14 +90,22 @@ export function Projects() {
       title="Featured projects."
       description="End-to-end builds covering AI integration, RAG pipelines, full-stack architecture, and third-party API orchestration."
     >
-      <div className="grid md:grid-cols-2 gap-5">
+      <motion.div
+        className="grid md:grid-cols-2 gap-5"
+        variants={stagger(0.1)}
+        initial="hidden"
+        whileInView="show"
+        viewport={viewportOnce}
+      >
         {projects.map((p) => {
           const Preview = p.Preview;
           const featured = p.featured;
           return (
-            <div
+            <motion.div
               key={p.name}
-              className={`group relative flex flex-col rounded-2xl overflow-hidden surface surface-hover transition-all duration-500 hover:-translate-y-0.5 ${
+              variants={fadeUp}
+              whileHover={{ y: -6, transition: { duration: 0.4, ease: easeOut } }}
+              className={`gradient-border group relative flex flex-col rounded-2xl overflow-hidden surface transition-colors duration-500 ${
                 featured
                   ? "md:col-span-2 border-primary/25"
                   : ""
@@ -161,7 +171,8 @@ export function Projects() {
 
                 {/* Action buttons */}
                 <div className="flex flex-wrap items-center gap-2.5 pt-5 border-t border-border">
-                  <a
+                  <motion.a
+                    {...buttonHover}
                     href={p.github}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -169,9 +180,10 @@ export function Projects() {
                   >
                     <Github className="w-3.5 h-3.5" />
                     GitHub
-                  </a>
+                  </motion.a>
                   {p.demo && (
-                    <a
+                    <motion.a
+                      {...buttonHover}
                       href={p.demo}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -179,14 +191,14 @@ export function Projects() {
                     >
                       <ExternalLink className="w-3.5 h-3.5" />
                       Live Demo
-                    </a>
+                    </motion.a>
                   )}
                 </div>
               </div>
-            </div>
+            </motion.div>
           );
         })}
-      </div>
+      </motion.div>
     </Section>
   );
 }
