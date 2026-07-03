@@ -62,36 +62,31 @@
 }
 
 :root {
-  --radius: 1rem;
+  --radius: 0.75rem;
   /*
-   * Locked palette — treat as source of truth.
-   *   bg          #070B17
-   *   card        #101827
-   *   border      rgba(255,255,255,0.08)
-   *   primary     #38BDF8
-   *   secondary   #2563EB
-   *   text        #F8FAFC
-   *   muted       #94A3B8
+   * Premium developer portfolio palette
+   * bg     #050816   surface #0B1120
+   * cyan   #38BDF8   indigo  #4F46E5
    */
-  --background: oklch(0.10 0.028 265);            /* #070B17 */
-  --foreground: oklch(0.985 0.004 250);           /* #F8FAFC */
-  --card: oklch(0.22 0.035 265);                  /* #101827 */
-  --card-foreground: oklch(0.985 0.004 250);
-  --popover: oklch(0.22 0.035 265);
-  --popover-foreground: oklch(0.985 0.004 250);
-  --primary: oklch(0.79 0.135 226);               /* #38BDF8 */
-  --primary-foreground: oklch(0.10 0.028 265);
-  --secondary: oklch(0.53 0.22 265);              /* #2563EB */
-  --secondary-foreground: oklch(0.985 0.004 250);
-  --muted: oklch(0.22 0.035 265);
-  --muted-foreground: oklch(0.70 0.028 258);      /* #94A3B8 */
-  --accent: oklch(0.79 0.135 226);
-  --accent-foreground: oklch(0.10 0.028 265);
+  --background: oklch(0.09 0.030 268);
+  --foreground: oklch(0.985 0.005 250);
+  --card: oklch(0.145 0.035 262);
+  --card-foreground: oklch(0.985 0.005 250);
+  --popover: oklch(0.145 0.035 262);
+  --popover-foreground: oklch(0.985 0.005 250);
+  --primary: oklch(0.79 0.135 224);
+  --primary-foreground: oklch(0.09 0.030 268);
+  --secondary: oklch(0.52 0.22 274);
+  --secondary-foreground: oklch(0.985 0.005 250);
+  --muted: oklch(0.20 0.028 262);
+  --muted-foreground: oklch(0.70 0.018 255);
+  --accent: oklch(0.22 0.030 262);
+  --accent-foreground: oklch(0.985 0.005 250);
   --destructive: oklch(0.62 0.21 25);
   --destructive-foreground: oklch(0.98 0 0);
-  --border: oklch(1 0 0 / 8%);                    /* rgba(255,255,255,0.08) */
+  --border: oklch(1 0 0 / 8%);
   --input: oklch(1 0 0 / 10%);
-  --ring: oklch(0.79 0.135 226 / 35%);
+  --ring: oklch(0.79 0.135 224);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -159,15 +154,6 @@
     -moz-osx-font-smoothing: grayscale;
     font-feature-settings: "ss01", "cv11", "cv02";
     letter-spacing: -0.005em;
-    font-size: 18px;
-    line-height: 1.7;
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-sans);
-    font-weight: 700;
-    letter-spacing: -0.028em;
-    line-height: 1.08;
   }
 
   html {
@@ -182,56 +168,69 @@
 }
 
 @layer utilities {
-  /* Vercel-style faint grid, used sparingly */
+  /* Faint grid background — Linear/Vercel style */
   .bg-grid {
     background-image:
-      linear-gradient(to right, color-mix(in oklab, var(--foreground) 4%, transparent) 1px, transparent 1px),
-      linear-gradient(to bottom, color-mix(in oklab, var(--foreground) 4%, transparent) 1px, transparent 1px);
-    background-size: 80px 80px;
+      linear-gradient(to right, color-mix(in oklab, var(--foreground) 5%, transparent) 1px, transparent 1px),
+      linear-gradient(to bottom, color-mix(in oklab, var(--foreground) 5%, transparent) 1px, transparent 1px);
+    background-size: 56px 56px;
   }
   .bg-grid-fade {
-    -webkit-mask-image: radial-gradient(ellipse 55% 45% at 50% 20%, #000 20%, transparent 80%);
-            mask-image: radial-gradient(ellipse 55% 45% at 50% 20%, #000 20%, transparent 80%);
+    -webkit-mask-image: radial-gradient(ellipse 70% 55% at 50% 30%, #000 40%, transparent 75%);
+            mask-image: radial-gradient(ellipse 70% 55% at 50% 30%, #000 40%, transparent 75%);
   }
+  /* Gradient text (cyan → indigo) */
   .text-gradient {
-    color: var(--foreground);
+    background-image: linear-gradient(
+      100deg,
+      var(--foreground) 0%,
+      var(--foreground) 30%,
+      color-mix(in oklab, var(--primary) 90%, white) 60%,
+      var(--secondary) 100%
+    );
+    -webkit-background-clip: text;
+            background-clip: text;
+    color: transparent;
   }
+  /* Soft glowing orb */
   .orb {
     background: radial-gradient(
       closest-side,
-      color-mix(in oklab, var(--primary) 5%, transparent),
+      color-mix(in oklab, var(--primary) 45%, transparent),
       transparent 70%
     );
-    filter: blur(110px);
+    filter: blur(60px);
   }
   .orb-indigo {
     background: radial-gradient(
       closest-side,
-      color-mix(in oklab, var(--secondary) 4%, transparent),
+      color-mix(in oklab, var(--secondary) 55%, transparent),
       transparent 70%
     );
-    filter: blur(120px);
+    filter: blur(70px);
   }
   /* Card surface used across sections */
   .surface {
     background-color: color-mix(in oklab, var(--card) 55%, transparent);
-    border: 1px solid color-mix(in oklab, var(--border) 100%, transparent);
-    border-radius: 1rem;
-    backdrop-filter: blur(8px);
+    border: 1px solid color-mix(in oklab, var(--border) 70%, transparent);
+    border-radius: 1.25rem;
+    backdrop-filter: blur(14px);
     box-shadow:
-      0 1px 0 0 color-mix(in oklab, white 3%, transparent) inset,
-      0 30px 60px -40px color-mix(in oklab, black 80%, transparent);
+      0 1px 0 0 color-mix(in oklab, white 4%, transparent) inset,
+      0 30px 60px -30px color-mix(in oklab, black 60%, transparent),
+      0 8px 20px -14px color-mix(in oklab, black 40%, transparent);
   }
   .surface-hover {
     transition: transform .5s cubic-bezier(.2,.7,.2,1), border-color .4s ease, background-color .4s ease, box-shadow .5s ease;
   }
   .surface-hover:hover {
-    transform: translateY(-2px);
-    border-color: color-mix(in oklab, white 12%, var(--border));
+    transform: translateY(-3px);
+    border-color: color-mix(in oklab, var(--primary) 35%, var(--border));
     background-color: color-mix(in oklab, var(--card) 70%, transparent);
     box-shadow:
-      0 1px 0 0 color-mix(in oklab, white 5%, transparent) inset,
-      0 40px 80px -40px color-mix(in oklab, black 80%, transparent);
+      0 1px 0 0 color-mix(in oklab, white 6%, transparent) inset,
+      0 40px 80px -30px color-mix(in oklab, var(--primary) 25%, transparent),
+      0 12px 30px -14px color-mix(in oklab, black 50%, transparent);
   }
   /* Hairline divider */
   .hairline {
@@ -256,75 +255,6 @@
   50% { opacity: 0.55; }
 }
 
-/* Animated gradient border — premium, subtle */
-@keyframes borderSpin {
-  to { transform: rotate(1turn); }
-}
-.gradient-border {
-  position: relative;
-  border-radius: 1.25rem;
-  isolation: isolate;
-}
-.gradient-border::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  padding: 1px;
-  background: conic-gradient(
-    from 0deg,
-    color-mix(in oklab, var(--primary) 60%, transparent),
-    color-mix(in oklab, var(--secondary) 55%, transparent),
-    transparent 45%,
-    color-mix(in oklab, var(--primary) 60%, transparent)
-  );
-  -webkit-mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-          mask-composite: exclude;
-  opacity: 0;
-  transition: opacity .6s ease;
-  pointer-events: none;
-  z-index: 0;
-}
-.gradient-border::after {
-  content: "";
-  position: absolute;
-  inset: -1px;
-  border-radius: inherit;
-  background: conic-gradient(
-    from var(--angle, 0deg),
-    transparent 0deg,
-    color-mix(in oklab, var(--primary) 70%, transparent) 60deg,
-    color-mix(in oklab, var(--secondary) 65%, transparent) 120deg,
-    transparent 200deg,
-    transparent 360deg
-  );
-  filter: blur(10px);
-  opacity: 0;
-  transition: opacity .6s ease;
-  pointer-events: none;
-  z-index: -1;
-  animation: borderSpin 8s linear infinite;
-}
-.gradient-border:hover::before,
-.gradient-border:hover::after {
-  opacity: 1;
-}
-@property --angle {
-  syntax: "<angle>";
-  initial-value: 0deg;
-  inherits: false;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .float-y,
-  .gradient-border::after {
-    animation: none !important;
-  }
-}
-
 /* Alternating section band — subtle radial + hairline wash.
    Auto-applied to every even section under <main> so any Section
    component gets alternation without prop plumbing. */
@@ -332,7 +262,8 @@
 main > section:nth-of-type(even):not(#hero) {
   position: relative;
   background:
-    linear-gradient(to bottom, color-mix(in oklab, var(--card) 28%, transparent), transparent 50%, color-mix(in oklab, var(--card) 22%, transparent));
+    radial-gradient(ellipse 80% 60% at 50% 0%, color-mix(in oklab, var(--primary) 6%, transparent), transparent 70%),
+    linear-gradient(to bottom, color-mix(in oklab, var(--card) 30%, transparent), transparent 40%, color-mix(in oklab, var(--card) 25%, transparent));
 }
 .section-alt::before,
 .section-alt::after,
@@ -354,20 +285,22 @@ main > section:nth-of-type(even):not(#hero)::after { bottom: 0; }
 .card-elegant {
   position: relative;
   background-color: color-mix(in oklab, var(--card) 55%, transparent);
-  border: 1px solid color-mix(in oklab, var(--border) 100%, transparent);
-  border-radius: 1rem;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid color-mix(in oklab, var(--border) 70%, transparent);
+  border-radius: 1.25rem;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   box-shadow:
-    0 1px 0 0 color-mix(in oklab, white 3%, transparent) inset,
-    0 30px 60px -40px color-mix(in oklab, black 80%, transparent);
+    0 1px 0 0 color-mix(in oklab, white 4%, transparent) inset,
+    0 30px 60px -30px color-mix(in oklab, black 60%, transparent),
+    0 8px 20px -12px color-mix(in oklab, black 40%, transparent);
   transition: transform .5s cubic-bezier(.2,.7,.2,1), border-color .4s ease, box-shadow .5s ease, background-color .4s ease;
 }
 .card-elegant:hover {
-  transform: translateY(-2px);
-  border-color: color-mix(in oklab, white 12%, var(--border));
+  transform: translateY(-3px);
+  border-color: color-mix(in oklab, var(--primary) 35%, var(--border));
   background-color: color-mix(in oklab, var(--card) 70%, transparent);
   box-shadow:
-    0 1px 0 0 color-mix(in oklab, white 5%, transparent) inset,
-    0 40px 80px -40px color-mix(in oklab, black 80%, transparent);
+    0 1px 0 0 color-mix(in oklab, white 6%, transparent) inset,
+    0 40px 80px -30px color-mix(in oklab, var(--primary) 25%, transparent),
+    0 12px 30px -14px color-mix(in oklab, black 50%, transparent);
 }

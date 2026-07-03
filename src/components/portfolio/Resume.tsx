@@ -1,7 +1,5 @@
 import { Section } from "./Section";
 import { Download } from "lucide-react";
-import { motion } from "framer-motion";
-import { fadeUp, stagger, viewportOnce, easeOut, buttonHover } from "./motion";
 
 const skills = [
   { label: "Languages", value: "Python, JavaScript, TypeScript, SQL" },
@@ -44,15 +42,14 @@ export function Resume() {
       description="A condensed overview of my background, stack, and the projects I'm most proud of. Download the full PDF for sharing."
     >
       <div className="flex flex-wrap items-center gap-3 mb-12">
-        <motion.a
-          {...buttonHover}
+        <a
           href="/resume.pdf"
           download
           className="inline-flex items-center gap-2 h-11 px-5 rounded-full bg-foreground text-background text-sm font-medium hover:bg-foreground/90 transition-colors"
         >
           <Download className="w-4 h-4" />
           Download Resume (PDF)
-        </motion.a>
+        </a>
         <a
           href="/resume.pdf"
           target="_blank"
@@ -63,18 +60,8 @@ export function Resume() {
         </a>
       </div>
 
-      <motion.div
-        className="grid md:grid-cols-2 gap-5"
-        variants={stagger(0.1)}
-        initial="hidden"
-        whileInView="show"
-        viewport={viewportOnce}
-      >
-        <motion.div
-          variants={fadeUp}
-          whileHover={{ y: -3, transition: { duration: 0.35, ease: easeOut } }}
-          className="gradient-border surface rounded-2xl p-7"
-        >
+      <div className="grid md:grid-cols-2 gap-5">
+        <div className="surface rounded-2xl p-7">
           <h3 className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground mb-4">
             Summary
           </h3>
@@ -100,13 +87,9 @@ export function Resume() {
             CGPA: 8.88 (up to 5th Semester). Coursework: Data Structures,
             DBMS, Operating Systems, Machine Learning, Web Engineering.
           </p>
-        </motion.div>
+        </div>
 
-        <motion.div
-          variants={fadeUp}
-          whileHover={{ y: -3, transition: { duration: 0.35, ease: easeOut } }}
-          className="gradient-border surface rounded-2xl p-7"
-        >
+        <div className="surface rounded-2xl p-7">
           <h3 className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground mb-4">
             Technical Skills
           </h3>
@@ -118,12 +101,9 @@ export function Resume() {
               </li>
             ))}
           </ul>
-        </motion.div>
+        </div>
 
-        <motion.div
-          variants={fadeUp}
-          className="gradient-border surface rounded-2xl p-7 md:col-span-2"
-        >
+        <div className="surface rounded-2xl p-7 md:col-span-2">
           <h3 className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground mb-5">
             Highlighted Projects
           </h3>
@@ -139,8 +119,8 @@ export function Resume() {
               </li>
             ))}
           </ul>
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
     </Section>
   );
 }
