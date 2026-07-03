@@ -255,6 +255,75 @@
   50% { opacity: 0.55; }
 }
 
+/* Animated gradient border — premium, subtle */
+@keyframes borderSpin {
+  to { transform: rotate(1turn); }
+}
+.gradient-border {
+  position: relative;
+  border-radius: 1.25rem;
+  isolation: isolate;
+}
+.gradient-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: conic-gradient(
+    from 0deg,
+    color-mix(in oklab, var(--primary) 60%, transparent),
+    color-mix(in oklab, var(--secondary) 55%, transparent),
+    transparent 45%,
+    color-mix(in oklab, var(--primary) 60%, transparent)
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  opacity: 0;
+  transition: opacity .6s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+.gradient-border::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: conic-gradient(
+    from var(--angle, 0deg),
+    transparent 0deg,
+    color-mix(in oklab, var(--primary) 70%, transparent) 60deg,
+    color-mix(in oklab, var(--secondary) 65%, transparent) 120deg,
+    transparent 200deg,
+    transparent 360deg
+  );
+  filter: blur(10px);
+  opacity: 0;
+  transition: opacity .6s ease;
+  pointer-events: none;
+  z-index: -1;
+  animation: borderSpin 8s linear infinite;
+}
+.gradient-border:hover::before,
+.gradient-border:hover::after {
+  opacity: 1;
+}
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .float-y,
+  .gradient-border::after {
+    animation: none !important;
+  }
+}
+
 /* Alternating section band — subtle radial + hairline wash.
    Auto-applied to every even section under <main> so any Section
    component gets alternation without prop plumbing. */

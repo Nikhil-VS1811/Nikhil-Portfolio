@@ -1,5 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ArrowRight, Download, Github, Linkedin, Mail, Code2 } from "lucide-react";
+import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
+import { fadeUp, stagger, viewportOnce, easeOut, buttonHover } from "./motion";
 
 const codeLines: Array<{ tokens: Array<{ t: string; c?: string }> }> = [
   { tokens: [{ t: "import", c: "kw" }, { t: " { " }, { t: "FastAPI", c: "cls" }, { t: " } " }, { t: "from", c: "kw" }, { t: " " }, { t: '"fastapi"', c: "str" } ] },
@@ -42,9 +44,13 @@ function useCountUp(target: number, duration = 1400) {
 function StatCard({ value, suffix = "", label, delay = 0 }: { value: number; suffix?: string; label: string; delay?: number }) {
   const n = useCountUp(value);
   return (
-    <div
-      className="relative rounded-2xl border border-border bg-card/50 backdrop-blur-md p-4 overflow-hidden group hover:border-primary/40 transition-colors animate-in fade-in slide-in-from-bottom-3 duration-700"
-      style={{ animationDelay: `${delay}ms` }}
+    <motion.div
+      initial={{ opacity: 0, y: 16, scale: 0.98 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={viewportOnce}
+      transition={{ duration: 0.6, ease: easeOut, delay: delay / 1000 }}
+      whileHover={{ y: -3, transition: { duration: 0.3, ease: easeOut } }}
+      className="relative rounded-2xl border border-border bg-card/50 backdrop-blur-md p-4 overflow-hidden group hover:border-primary/40 transition-colors"
     >
       <div className="absolute -inset-px rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity" style={{ background: "radial-gradient(400px circle at var(--x,50%) var(--y,50%), hsl(var(--primary)/0.08), transparent 40%)" }} />
       <div className="relative">
@@ -56,21 +62,23 @@ function StatCard({ value, suffix = "", label, delay = 0 }: { value: number; suf
           {label}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
 function SocialIcon({ href, label, children }: { href: string; label: string; children: React.ReactNode }) {
   return (
-    <a
+    <motion.a
       href={href}
       target={href.startsWith("http") ? "_blank" : undefined}
       rel="noreferrer"
       aria-label={label}
+      whileHover={{ y: -2, scale: 1.05, transition: { duration: 0.25, ease: easeOut } }}
+      whileTap={{ scale: 0.95 }}
       className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card/40 backdrop-blur-md text-muted-foreground hover:text-foreground hover:border-primary/50 hover:bg-card/70 transition-colors"
     >
       {children}
-    </a>
+    </motion.a>
   );
 }
 
@@ -84,31 +92,48 @@ function LeetCodeIcon({ className = "w-4 h-4" }: { className?: string }) {
 }
 
 export function Hero() {
+  const heroRef = useRef<HTMLElement>(null);
+  const reduce = useReducedMotion();
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+  // Parallax — subtle, layered depth
+  const yEditor = useTransform(scrollYProgress, [0, 1], [0, reduce ? 0 : -80]);
+  const yStats = useTransform(scrollYProgress, [0, 1], [0, reduce ? 0 : -40]);
+  const yOrbs = useTransform(scrollYProgress, [0, 1], [0, reduce ? 0 : 120]);
+  const opacityBg = useTransform(scrollYProgress, [0, 1], [1, 0.4]);
+
   return (
     <section
+      ref={heroRef}
       id="hero"
       className="relative min-h-screen flex items-center pt-28 md:pt-32 pb-20 overflow-hidden"
     >
       {/* Background */}
-      <div aria-hidden className="pointer-events-none absolute inset-0">
+      <motion.div aria-hidden style={{ y: yOrbs, opacity: opacityBg }} className="pointer-events-none absolute inset-0">
         <div className="absolute inset-0 bg-grid bg-grid-fade opacity-[0.45] animate-[gridPulse_12s_ease-in-out_infinite]" />
         <div className="absolute -top-40 left-1/3 w-[720px] h-[520px] orb opacity-60" />
         <div className="absolute top-1/3 -right-32 w-[520px] h-[520px] orb-indigo opacity-50" />
         <div className="absolute bottom-0 inset-x-0 h-40 bg-gradient-to-b from-transparent to-background" />
-      </div>
+      </motion.div>
 
       <div className="relative mx-auto max-w-7xl px-6 w-full grid lg:grid-cols-[1.05fr_1fr] gap-12 lg:gap-16 items-center">
         {/* LEFT */}
-        <div>
-          <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card/60 backdrop-blur-md pl-2 pr-4 py-1.5 text-xs text-muted-foreground animate-in fade-in slide-in-from-bottom-2 duration-700">
+        <motion.div
+          variants={stagger(0.11, 0.05)}
+          initial="hidden"
+          animate="show"
+        >
+          <motion.div variants={fadeUp} className="inline-flex items-center gap-2 rounded-full border border-border bg-card/60 backdrop-blur-md pl-2 pr-4 py-1.5 text-xs text-muted-foreground">
             <span className="relative flex h-4 w-4 items-center justify-center">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary/40" />
               <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-primary" />
             </span>
             <span className="font-mono tracking-wide">Available for internships & collaborations</span>
-          </div>
+          </motion.div>
 
-          <h1 className="mt-7 text-[40px] leading-[1.02] sm:text-5xl md:text-6xl lg:text-[72px] font-medium tracking-[-0.035em] text-foreground animate-in fade-in slide-in-from-bottom-3 duration-700">
+          <motion.h1 variants={fadeUp} className="mt-7 text-[40px] leading-[1.02] sm:text-5xl md:text-6xl lg:text-[72px] font-medium tracking-[-0.035em] text-foreground">
             <span className="block text-gradient">AI Engineer</span>
             <span className="block text-foreground/95">
               &<span className="font-serif italic font-normal"> Full Stack</span>
@@ -116,52 +141,61 @@ export function Hero() {
             <span className="block font-serif italic font-normal text-foreground/95">
               Developer<span className="text-primary">.</span>
             </span>
-          </h1>
+          </motion.h1>
 
-          <p className="mt-7 max-w-xl text-base md:text-[17px] text-muted-foreground leading-relaxed animate-in fade-in slide-in-from-bottom-4 duration-700 delay-150">
+          <motion.p variants={fadeUp} className="mt-7 max-w-xl text-base md:text-[17px] text-muted-foreground leading-relaxed">
             I'm Nikhil VS — I build scalable AI-powered web applications,
             developer tools, and modern full-stack products. From RAG pipelines
             to production APIs, I ship end-to-end.
-          </p>
+          </motion.p>
 
-          <div className="mt-9 flex flex-wrap items-center gap-3 animate-in fade-in duration-700 delay-300">
-            <a
+          <motion.div variants={fadeUp} className="mt-9 flex flex-wrap items-center gap-3">
+            <motion.a
+              {...buttonHover}
               href="#projects"
               className="group inline-flex items-center gap-2 h-11 pl-5 pr-4 rounded-full bg-foreground text-background text-sm font-medium hover:bg-foreground/90 transition-colors"
             >
               View Projects
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
-            </a>
-            <a
+            </motion.a>
+            <motion.a
+              {...buttonHover}
               href="/resume.pdf"
               download
               className="inline-flex items-center gap-2 h-11 px-5 rounded-full border border-border bg-card/40 backdrop-blur-md text-sm font-medium text-foreground hover:border-primary/60 hover:bg-card/70 transition-colors"
             >
               <Download className="w-4 h-4" />
               Download Resume
-            </a>
-            <a
+            </motion.a>
+            <motion.a
+              {...buttonHover}
               href="#contact"
               className="inline-flex items-center h-11 px-5 rounded-full text-sm text-muted-foreground hover:text-foreground transition-colors"
             >
               Contact Me →
-            </a>
-          </div>
+            </motion.a>
+          </motion.div>
 
-          <div className="mt-8 flex items-center gap-2.5 animate-in fade-in duration-700 delay-500">
+          <motion.div variants={fadeUp} className="mt-8 flex items-center gap-2.5">
             <SocialIcon href="https://github.com/Nikhil-VS1811" label="GitHub"><Github className="w-4 h-4" /></SocialIcon>
             <SocialIcon href="https://www.linkedin.com/in/nikhil-vs-8a7541288/" label="LinkedIn"><Linkedin className="w-4 h-4" /></SocialIcon>
             <SocialIcon href="https://leetcode.com/u/Nikhil_VS/" label="LeetCode"><LeetCodeIcon /></SocialIcon>
             <SocialIcon href="mailto:nikhilvenkatesh1811@gmail.com" label="Email"><Mail className="w-4 h-4" /></SocialIcon>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* RIGHT */}
-        <div className="relative animate-in fade-in slide-in-from-bottom-6 duration-1000 delay-200">
+        <motion.div
+          className="relative"
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, ease: easeOut, delay: 0.15 }}
+          style={{ y: yEditor }}
+        >
           {/* Floating code editor */}
           <div className="relative float-y">
             <div aria-hidden className="absolute -inset-8 rounded-[2rem] bg-gradient-to-br from-primary/20 via-indigo-500/10 to-transparent blur-2xl opacity-70" />
-            <div className="relative rounded-2xl border border-border bg-card/70 backdrop-blur-xl shadow-2xl shadow-primary/10 overflow-hidden">
+            <div className="gradient-border relative rounded-2xl border border-border bg-card/70 backdrop-blur-xl shadow-2xl shadow-primary/10 overflow-hidden">
               {/* Titlebar */}
               <div className="flex items-center gap-2 px-4 py-3 border-b border-border bg-card/40">
                 <span className="h-3 w-3 rounded-full bg-red-400/70" />
@@ -184,14 +218,20 @@ export function Hero() {
                 </div>
                 <div className="px-4 py-4 overflow-x-auto">
                   {codeLines.map((line, i) => (
-                    <div key={i} className="whitespace-pre">
+                    <motion.div
+                      key={i}
+                      initial={{ opacity: 0, x: -8 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.5, ease: easeOut, delay: 0.6 + i * 0.06 }}
+                      className="whitespace-pre"
+                    >
                       {line.tokens.length === 0 ? "\u00A0" : line.tokens.map((tok, j) => (
                         <span key={j} className={tok.c ? tokenColor[tok.c] : "text-foreground/85"}>{tok.t}</span>
                       ))}
                       {i === codeLines.length - 1 && (
                         <span className="inline-block w-1.5 h-4 -mb-0.5 ml-0.5 bg-primary/80 animate-pulse align-middle" />
                       )}
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
               </div>
@@ -207,13 +247,13 @@ export function Hero() {
           </div>
 
           {/* Stats */}
-          <div className="mt-6 grid grid-cols-2 gap-3">
+          <motion.div className="mt-6 grid grid-cols-2 gap-3" style={{ y: yStats }}>
             <StatCard value={12} suffix="+" label="Projects" delay={400} />
             <StatCard value={18} suffix="+" label="Technologies" delay={500} />
             <StatCard value={420} suffix="+" label="GitHub Contribs" delay={600} />
             <StatCard value={2} suffix="+ yrs" label="Experience" delay={700} />
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );
