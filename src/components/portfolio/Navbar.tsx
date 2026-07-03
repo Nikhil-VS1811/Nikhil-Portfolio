@@ -59,26 +59,28 @@ export function Navbar() {
   }, [open]);
 
   return (
-    <header
-      className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
-        scrolled || open
-          ? "backdrop-blur-xl bg-background/80 border-b border-border"
-          : "bg-transparent"
-      }`}
-    >
-      <nav className="mx-auto max-w-6xl px-4 sm:px-6 h-14 sm:h-16 flex items-center justify-between">
+    <header className="fixed inset-x-0 top-0 z-50 px-3 sm:px-6 pt-3 sm:pt-5">
+      <nav
+        className={`mx-auto max-w-5xl h-12 sm:h-14 pl-4 sm:pl-5 pr-2 sm:pr-2 flex items-center justify-between rounded-full transition-all duration-300 ${
+          scrolled || open
+            ? "bg-background/70 border border-border backdrop-blur-xl shadow-[0_1px_0_0_rgba(255,255,255,0.04)_inset,0_10px_40px_-20px_rgba(0,0,0,0.6)]"
+            : "bg-background/40 border border-border/60 backdrop-blur-md"
+        }`}
+      >
         {/* Brand */}
         <a
           href="#hero"
-          className="font-mono text-sm tracking-tight text-foreground shrink-0"
+          className="font-mono text-sm tracking-tight text-foreground shrink-0 flex items-center gap-2"
         >
-          <span className="text-primary">/</span>
-          <span className="hidden sm:inline">nikhil.dev</span>
+          <span className="relative inline-flex h-6 w-6 items-center justify-center rounded-md bg-gradient-to-br from-primary/80 to-secondary/70 text-[10px] font-bold text-primary-foreground shadow-[0_0_0_1px_color-mix(in_oklab,var(--primary)_35%,transparent)]">
+            N
+          </span>
+          <span className="hidden sm:inline text-foreground/90">nikhil<span className="text-muted-foreground">.dev</span></span>
           <span className="sm:hidden">nikhil</span>
         </a>
 
         {/* Desktop nav - hidden below lg to avoid overflow on tablets */}
-        <ul className="hidden lg:flex items-center gap-6 xl:gap-8 text-sm text-muted-foreground">
+        <ul className="hidden lg:flex items-center gap-7 text-[13px] text-muted-foreground">
           {links.map((l) => (
             <li key={l.href}>
               <a
@@ -95,7 +97,7 @@ export function Navbar() {
         <a
           href="/resume.pdf"
           download
-          className="hidden lg:inline-flex items-center gap-2 text-sm font-medium px-4 py-2 rounded-full border border-border hover:border-primary hover:text-primary transition-colors shrink-0"
+          className="hidden lg:inline-flex items-center gap-2 text-[13px] font-medium h-9 px-4 rounded-full bg-foreground text-background hover:bg-foreground/90 transition-colors shrink-0"
         >
           <Download className="w-3.5 h-3.5" />
           Resume
@@ -107,7 +109,7 @@ export function Navbar() {
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
-          className="lg:hidden relative w-10 h-10 flex flex-col items-center justify-center rounded-lg hover:bg-accent/50 transition-colors"
+          className="lg:hidden relative w-10 h-10 flex flex-col items-center justify-center rounded-full hover:bg-accent/50 transition-colors text-foreground"
         >
           <span
             className={`block w-5 h-[2px] bg-current rounded-full transition-all duration-300 origin-center ${
@@ -130,28 +132,28 @@ export function Navbar() {
       {/* Mobile / tablet overlay menu */}
       <div
         ref={menuRef}
-        className={`lg:hidden absolute top-full left-0 right-0 border-b border-border bg-background/95 backdrop-blur-xl transition-all duration-300 overflow-hidden ${
-          open ? "max-h-[28rem] opacity-100" : "max-h-0 opacity-0"
+        className={`lg:hidden mx-auto mt-2 max-w-5xl rounded-2xl border border-border bg-background/90 backdrop-blur-xl transition-all duration-300 overflow-hidden ${
+          open ? "max-h-[32rem] opacity-100" : "max-h-0 opacity-0 border-transparent"
         }`}
       >
-        <ul className="flex flex-col px-4 sm:px-6 py-4 gap-1">
+        <ul className="flex flex-col p-3 gap-1">
           {links.map((l) => (
             <li key={l.href}>
               <a
                 href={l.href}
                 onClick={() => setOpen(false)}
-                className="flex items-center h-11 text-sm text-muted-foreground hover:text-foreground hover:bg-accent/40 rounded-lg px-3 transition-colors"
+                className="flex items-center h-11 text-sm text-muted-foreground hover:text-foreground hover:bg-accent/40 rounded-xl px-4 transition-colors"
               >
                 {l.label}
               </a>
             </li>
           ))}
-          <li className="pt-2 border-t border-border mt-2">
+          <li className="pt-3 mt-1 border-t border-border">
             <a
               href="/resume.pdf"
               download
               onClick={() => setOpen(false)}
-              className="flex items-center justify-center gap-2 h-10 text-sm font-medium rounded-full border border-border hover:border-primary hover:text-primary transition-colors mt-2"
+              className="flex items-center justify-center gap-2 h-11 text-sm font-medium rounded-full bg-foreground text-background hover:bg-foreground/90 transition-colors mt-2"
             >
               <Download className="w-3.5 h-3.5" />
               Download Resume
