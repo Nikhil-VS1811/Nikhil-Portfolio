@@ -52,7 +52,13 @@ const groups: Group[] = [
   {
     provider: "Google",
     Logo: GoogleLogo,
-    items: [{ title: "Google Python", year: "2024" }],
+    items: [
+      {
+        title: "Crash Course on Python",
+        year: "2025",
+        url: "https://coursera.org/verify/29EATY8PNOCT",
+      },
+    ],
   },
   {
     provider: "DeepLearning.AI",
