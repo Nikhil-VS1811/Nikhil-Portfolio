@@ -159,6 +159,15 @@
     -moz-osx-font-smoothing: grayscale;
     font-feature-settings: "ss01", "cv11", "cv02";
     letter-spacing: -0.005em;
+    font-size: 18px;
+    line-height: 1.7;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    letter-spacing: -0.028em;
+    line-height: 1.08;
   }
 
   html {
