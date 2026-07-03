@@ -109,10 +109,10 @@ export function Hero() {
       id="hero"
       className="relative min-h-screen flex items-center pt-28 md:pt-32 pb-20 overflow-hidden"
     >
-      {/* Background */}
+      {/* Background — single soft ambient wash */}
       <motion.div aria-hidden style={{ y: yOrbs, opacity: opacityBg }} className="pointer-events-none absolute inset-0">
-        <div className="absolute inset-0 bg-grid bg-grid-fade opacity-[0.45]" />
-        <div className="absolute -top-56 left-1/2 -translate-x-1/2 w-[1000px] h-[560px] orb opacity-60" />
+        <div className="absolute inset-0 bg-grid bg-grid-fade opacity-[0.35]" />
+        <div className="absolute -top-60 left-1/2 -translate-x-1/2 w-[1100px] h-[600px] orb opacity-40" />
         <div className="absolute bottom-0 inset-x-0 h-40 bg-gradient-to-b from-transparent to-background" />
       </motion.div>
 
@@ -192,7 +192,8 @@ export function Hero() {
         >
           {/* Floating code editor */}
           <div className="relative float-y">
-            <div aria-hidden className="absolute -inset-10 rounded-[2rem] bg-white/[0.03] blur-3xl" />
+            {/* Soft accent glow — kept only for this key card */}
+            <div aria-hidden className="absolute -inset-12 rounded-[2rem] bg-[radial-gradient(closest-side,color-mix(in_oklab,var(--primary)_10%,transparent),transparent_70%)] blur-2xl opacity-70" />
             <div className="relative rounded-2xl border border-border/80 bg-card/60 backdrop-blur-xl shadow-2xl shadow-black/40 overflow-hidden">
               {/* Titlebar */}
               <div className="flex items-center gap-2 px-4 py-3 border-b border-border/70 bg-card/30">

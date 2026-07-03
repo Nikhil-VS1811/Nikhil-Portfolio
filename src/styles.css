@@ -62,34 +62,36 @@
 }
 
 :root {
-  --radius: 0.875rem;
+  --radius: 1rem;
   /*
    * Locked palette — treat as source of truth.
-   *   bg        #050816
-   *   surface   #0F172A
-   *   accent    #38BDF8
-   *   text      #F8FAFC
-   *   muted     #94A3B8
+   *   bg          #070B17
+   *   card        #101827
+   *   border      rgba(255,255,255,0.08)
+   *   primary     #38BDF8
+   *   secondary   #2563EB
+   *   text        #F8FAFC
+   *   muted       #94A3B8
    */
-  --background: oklch(0.09 0.035 268);            /* #050816 */
+  --background: oklch(0.10 0.028 265);            /* #070B17 */
   --foreground: oklch(0.985 0.004 250);           /* #F8FAFC */
-  --card: oklch(0.204 0.037 265);                 /* #0F172A */
+  --card: oklch(0.22 0.035 265);                  /* #101827 */
   --card-foreground: oklch(0.985 0.004 250);
-  --popover: oklch(0.204 0.037 265);
+  --popover: oklch(0.22 0.035 265);
   --popover-foreground: oklch(0.985 0.004 250);
   --primary: oklch(0.79 0.135 226);               /* #38BDF8 */
-  --primary-foreground: oklch(0.09 0.035 268);
-  --secondary: oklch(0.204 0.037 265);
+  --primary-foreground: oklch(0.10 0.028 265);
+  --secondary: oklch(0.53 0.22 265);              /* #2563EB */
   --secondary-foreground: oklch(0.985 0.004 250);
-  --muted: oklch(0.204 0.037 265);
+  --muted: oklch(0.22 0.035 265);
   --muted-foreground: oklch(0.70 0.028 258);      /* #94A3B8 */
   --accent: oklch(0.79 0.135 226);
-  --accent-foreground: oklch(0.09 0.035 268);
+  --accent-foreground: oklch(0.10 0.028 265);
   --destructive: oklch(0.62 0.21 25);
   --destructive-foreground: oklch(0.98 0 0);
-  --border: oklch(1 0 0 / 7%);
-  --input: oklch(1 0 0 / 9%);
-  --ring: oklch(0.79 0.135 226 / 40%);
+  --border: oklch(1 0 0 / 8%);                    /* rgba(255,255,255,0.08) */
+  --input: oklch(1 0 0 / 10%);
+  --ring: oklch(0.79 0.135 226 / 35%);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -188,18 +190,18 @@
   .orb {
     background: radial-gradient(
       closest-side,
-      color-mix(in oklab, var(--primary) 14%, transparent),
+      color-mix(in oklab, var(--primary) 5%, transparent),
       transparent 70%
     );
-    filter: blur(90px);
+    filter: blur(110px);
   }
   .orb-indigo {
     background: radial-gradient(
       closest-side,
-      color-mix(in oklab, var(--primary) 8%, transparent),
+      color-mix(in oklab, var(--secondary) 4%, transparent),
       transparent 70%
     );
-    filter: blur(100px);
+    filter: blur(120px);
   }
   /* Card surface used across sections */
   .surface {
