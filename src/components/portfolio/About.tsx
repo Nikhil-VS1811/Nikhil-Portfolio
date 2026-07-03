@@ -1,6 +1,4 @@
 import { Section } from "./Section";
-import { motion } from "framer-motion";
-import { fadeUp, slideLeft, stagger, viewportOnce } from "./motion";
 
 export function About() {
   return (
@@ -9,14 +7,8 @@ export function About() {
       eyebrow="About"
       title="AI engineering & full stack development."
     >
-      <motion.div
-        className="grid md:grid-cols-3 gap-12 lg:gap-16"
-        variants={stagger(0.12)}
-        initial="hidden"
-        whileInView="show"
-        viewport={viewportOnce}
-      >
-        <motion.div variants={fadeUp} className="md:col-span-2 space-y-6 text-muted-foreground leading-relaxed text-lg">
+      <div className="grid md:grid-cols-3 gap-12 lg:gap-16">
+        <div className="md:col-span-2 space-y-6 text-muted-foreground leading-relaxed text-lg">
           <p>
             I'm Nikhil VS, a final-year Information Science student working at the
             intersection of Machine Learning, full stack development and Generative AI.
@@ -29,8 +21,8 @@ export function About() {
             practical AI integration. I'm actively looking for AI/ML and Software
             Engineering roles where I can contribute, learn and ship real products.
           </p>
-        </motion.div>
-        <motion.div variants={slideLeft} className="gradient-border surface rounded-2xl p-6 space-y-5 font-mono text-sm h-fit">
+        </div>
+        <div className="surface rounded-2xl p-6 space-y-5 font-mono text-sm h-fit">
           {[
             { k: "Currently", v: "B.E. ISE · Final year" },
             { k: "Based in", v: "Bengaluru, India" },
@@ -43,8 +35,8 @@ export function About() {
               <div className="mt-2 text-foreground">{r.v}</div>
             </div>
           ))}
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
     </Section>
   );
 }
