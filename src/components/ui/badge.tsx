@@ -4,16 +4,22 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const badgeVariants = cva(
-  "inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
+  "inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 font-mono text-[10.5px] uppercase tracking-[0.14em] font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
   {
     variants: {
       variant: {
-        default: "border-transparent bg-primary text-primary-foreground shadow hover:bg-primary/80",
+        default:
+          "border-border bg-background/60 backdrop-blur-md text-foreground/85 hover:border-primary/50 hover:text-foreground",
+        primary:
+          "border-primary/40 bg-[color-mix(in_oklab,var(--primary)_12%,transparent)] text-foreground",
         secondary:
-          "border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80",
+          "border-border bg-card/50 backdrop-blur-md text-muted-foreground hover:text-foreground",
         destructive:
-          "border-transparent bg-destructive text-destructive-foreground shadow hover:bg-destructive/80",
-        outline: "text-foreground",
+          "border-destructive/40 bg-[color-mix(in_oklab,var(--destructive)_14%,transparent)] text-foreground",
+        outline:
+          "border-border text-muted-foreground hover:text-foreground",
+        dot:
+          "border-border bg-background/50 backdrop-blur-md text-muted-foreground pl-1.5 before:content-[''] before:w-1.5 before:h-1.5 before:rounded-full before:bg-primary before:shadow-[0_0_0_3px_color-mix(in_oklab,var(--primary)_18%,transparent)]",
       },
     },
     defaultVariants: {
