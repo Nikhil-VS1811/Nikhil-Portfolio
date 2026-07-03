@@ -255,14 +255,20 @@
   50% { opacity: 0.55; }
 }
 
-/* Alternating section band — subtle radial + hairline wash */
-.section-alt {
+/* Alternating section band — subtle radial + hairline wash.
+   Auto-applied to every even section under <main> so any Section
+   component gets alternation without prop plumbing. */
+.section-alt,
+main > section:nth-of-type(even):not(#hero) {
+  position: relative;
   background:
     radial-gradient(ellipse 80% 60% at 50% 0%, color-mix(in oklab, var(--primary) 6%, transparent), transparent 70%),
     linear-gradient(to bottom, color-mix(in oklab, var(--card) 30%, transparent), transparent 40%, color-mix(in oklab, var(--card) 25%, transparent));
 }
 .section-alt::before,
-.section-alt::after {
+.section-alt::after,
+main > section:nth-of-type(even):not(#hero)::before,
+main > section:nth-of-type(even):not(#hero)::after {
   content: "";
   position: absolute;
   left: 10%;
@@ -270,8 +276,10 @@
   height: 1px;
   background: linear-gradient(to right, transparent, color-mix(in oklab, var(--foreground) 8%, transparent), transparent);
 }
-.section-alt::before { top: 0; }
-.section-alt::after { bottom: 0; }
+.section-alt::before,
+main > section:nth-of-type(even):not(#hero)::before { top: 0; }
+.section-alt::after,
+main > section:nth-of-type(even):not(#hero)::after { bottom: 0; }
 
 /* Elegant card — soft border, gentle shadow, subtle lift on hover */
 .card-elegant {
