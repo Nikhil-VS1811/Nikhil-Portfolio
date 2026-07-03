@@ -32,6 +32,8 @@ export function Contact() {
               { label: "GitHub", href: "https://github.com/Nikhil-VS1811" },
               { label: "LinkedIn", href: "https://www.linkedin.com/in/nikhil-vs/" },
               { label: "LeetCode", href: "https://leetcode.com/u/Nikhilvs1811/" },
+              { label: "Codeforces", href: "https://codeforces.com/profile/Nikhil_1811" },
+              { label: "GeeksforGeeks", href: "https://www.geeksforgeeks.org/profile/nikhilvs1811" },
             ].map((p) => (
               <a
                 key={p.label}
