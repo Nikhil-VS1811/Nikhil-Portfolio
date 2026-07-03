@@ -28,21 +28,23 @@ export function Profiles() {
       eyebrow="Around the web"
       title="Coding profiles."
     >
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-border rounded-2xl overflow-hidden border border-border">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {profiles.map((p) => (
           <a
             key={p.platform}
             href={p.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center justify-between p-6 bg-card hover:bg-accent transition-colors"
+            className="group surface surface-hover rounded-2xl p-6 flex items-start justify-between"
           >
             <div>
               <div className="text-foreground font-medium">{p.platform}</div>
-              <div className="font-mono text-xs text-muted-foreground mt-1">{p.handle}</div>
-              <div className="text-sm text-muted-foreground mt-3">{p.stat}</div>
+              <div className="font-mono text-xs text-muted-foreground mt-1">
+                {p.handle}
+              </div>
+              <div className="text-sm text-muted-foreground mt-4">{p.stat}</div>
             </div>
-            <span className="text-muted-foreground group-hover:text-primary transition-colors">
+            <span className="text-muted-foreground group-hover:text-primary group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all">
               ↗
             </span>
           </a>
