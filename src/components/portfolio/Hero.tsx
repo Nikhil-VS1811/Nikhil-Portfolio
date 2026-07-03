@@ -111,8 +111,8 @@ export function Hero() {
     >
       {/* Background */}
       <motion.div aria-hidden style={{ y: yOrbs, opacity: opacityBg }} className="pointer-events-none absolute inset-0">
-        <div className="absolute inset-0 bg-grid bg-grid-fade opacity-[0.5]" />
-        <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[900px] h-[500px] orb opacity-70" />
+        <div className="absolute inset-0 bg-grid bg-grid-fade opacity-[0.45]" />
+        <div className="absolute -top-56 left-1/2 -translate-x-1/2 w-[1000px] h-[560px] orb opacity-60" />
         <div className="absolute bottom-0 inset-x-0 h-40 bg-gradient-to-b from-transparent to-background" />
       </motion.div>
 
@@ -137,7 +137,7 @@ export function Hero() {
               & <span className="font-serif italic font-normal">Full Stack</span>
             </span>
             <span className="block font-serif italic font-normal">
-              Developer.
+              Developer<span className="text-primary">.</span>
             </span>
           </motion.h1>
 

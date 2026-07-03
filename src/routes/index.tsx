@@ -29,7 +29,7 @@ function Index() {
           className="absolute inset-0 opacity-[0.9]"
           style={{
             background:
-              "radial-gradient(1000px 500px at 50% -10%, color-mix(in oklab, white 4%, transparent), transparent 65%)",
+              "radial-gradient(1100px 520px at 50% -10%, color-mix(in oklab, var(--primary) 10%, transparent), transparent 65%)",
           }}
         />
       </div>
