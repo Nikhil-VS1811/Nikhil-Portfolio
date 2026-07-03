@@ -14,17 +14,20 @@ export function Section({
   children: ReactNode;
 }) {
   return (
-    <section id={id} className="py-24 md:py-32 scroll-mt-20">
+    <section id={id} className="relative py-28 md:py-40 scroll-mt-24">
       <div className="mx-auto max-w-6xl px-6">
-        <div className="mb-14 max-w-2xl">
-          <div className="font-mono text-xs uppercase tracking-[0.2em] text-primary mb-4">
+        <div className="mb-16 md:mb-20 max-w-2xl">
+          <div className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.22em] text-primary/90 mb-5">
+            <span className="h-1 w-1 rounded-full bg-primary shadow-[0_0_0_3px_color-mix(in_oklab,var(--primary)_20%,transparent)]" />
             {eyebrow}
           </div>
-          <h2 className="text-3xl md:text-4xl font-medium tracking-tight text-foreground">
+          <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-foreground leading-[1.1]">
             {title}
           </h2>
           {description && (
-            <p className="mt-4 text-muted-foreground leading-relaxed">{description}</p>
+            <p className="mt-5 text-base md:text-lg text-muted-foreground leading-relaxed">
+              {description}
+            </p>
           )}
         </div>
         {children}

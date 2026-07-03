@@ -88,31 +88,31 @@ export function Projects() {
       title="Featured projects."
       description="End-to-end builds covering AI integration, RAG pipelines, full-stack architecture, and third-party API orchestration."
     >
-      <div className="grid md:grid-cols-2 gap-6">
+      <div className="grid md:grid-cols-2 gap-5">
         {projects.map((p) => {
           const Preview = p.Preview;
           const featured = p.featured;
           return (
             <div
               key={p.name}
-              className={`group relative flex flex-col rounded-2xl border bg-card overflow-hidden transition-all duration-300 hover:-translate-y-0.5 ${
+              className={`group relative flex flex-col rounded-2xl overflow-hidden surface surface-hover transition-all duration-500 hover:-translate-y-0.5 ${
                 featured
-                  ? "md:col-span-2 border-primary/40 shadow-xl shadow-primary/5 hover:border-primary/70 hover:shadow-primary/20"
-                  : "border-border hover:border-primary/40"
+                  ? "md:col-span-2 border-primary/25"
+                  : ""
               }`}
             >
               {featured && (
                 <>
                   <div
-                    className="pointer-events-none absolute inset-0 opacity-60"
+                    className="pointer-events-none absolute inset-0 opacity-70"
                     style={{
                       background:
-                        "radial-gradient(ellipse at top left, hsl(var(--primary) / 0.10), transparent 55%)",
+                        "radial-gradient(ellipse 60% 60% at 0% 0%, color-mix(in oklab, var(--primary) 14%, transparent), transparent 60%), radial-gradient(ellipse 50% 50% at 100% 100%, color-mix(in oklab, var(--secondary) 12%, transparent), transparent 60%)",
                     }}
                   />
-                  <div className="absolute top-4 right-4 z-10 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary/15 border border-primary/30 backdrop-blur">
-                    <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-                    <span className="text-[10px] font-mono uppercase tracking-wider text-primary">
+                  <div className="absolute top-4 right-4 z-10 inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-background/70 border border-border backdrop-blur-md">
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                    <span className="text-[10px] font-mono uppercase tracking-[0.18em] text-foreground/80">
                       Flagship
                     </span>
                   </div>
@@ -120,7 +120,7 @@ export function Projects() {
               )}
               {/* UI preview */}
               <div
-                className={`relative bg-gradient-to-br from-muted/40 to-background border-b border-border overflow-hidden ${
+                className={`relative border-b border-border overflow-hidden bg-[radial-gradient(ellipse_at_top,color-mix(in_oklab,var(--muted)_60%,transparent),transparent_70%)] ${
                   featured ? "h-64 md:h-80" : "h-56"
                 }`}
               >
@@ -130,9 +130,9 @@ export function Projects() {
               </div>
 
               {/* Content */}
-              <div className={`relative flex flex-col flex-1 ${featured ? "p-8" : "p-7"}`}>
+              <div className={`relative flex flex-col flex-1 ${featured ? "p-8" : "p-6 md:p-7"}`}>
                 <h3
-                  className={`font-medium text-foreground mb-4 ${
+                  className={`font-medium text-foreground mb-4 tracking-tight ${
                     featured ? "text-2xl md:text-3xl" : "text-xl"
                   }`}
                 >
@@ -148,15 +148,11 @@ export function Projects() {
                 </p>
 
                 {/* Tech stack */}
-                <div className="flex flex-wrap gap-2 mb-6">
+                <div className="flex flex-wrap gap-1.5 mb-6">
                   {p.stack.map((s) => (
                     <span
                       key={s}
-                      className={`font-mono text-[11px] px-2.5 py-1 rounded-full ${
-                        featured
-                          ? "bg-primary/10 text-primary/90 border border-primary/20"
-                          : "bg-muted text-muted-foreground"
-                      }`}
+                      className="font-mono text-[10.5px] px-2.5 py-1 rounded-md bg-background/50 text-muted-foreground border border-border"
                     >
                       {s}
                     </span>
@@ -164,12 +160,12 @@ export function Projects() {
                 </div>
 
                 {/* Action buttons */}
-                <div className="flex flex-wrap items-center gap-3 pt-5 border-t border-border">
+                <div className="flex flex-wrap items-center gap-2.5 pt-5 border-t border-border">
                   <a
                     href={p.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border text-xs font-medium text-foreground hover:border-primary hover:text-primary transition-colors"
+                    className="inline-flex items-center gap-2 h-9 px-4 rounded-full border border-border text-xs font-medium text-foreground hover:border-primary/60 hover:text-primary transition-colors"
                   >
                     <Github className="w-3.5 h-3.5" />
                     GitHub
@@ -179,7 +175,7 @@ export function Projects() {
                       href={p.demo}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary text-primary-foreground text-xs font-medium hover:opacity-90 transition-opacity"
+                      className="inline-flex items-center gap-2 h-9 px-4 rounded-full bg-foreground text-background text-xs font-medium hover:bg-foreground/90 transition-colors"
                     >
                       <ExternalLink className="w-3.5 h-3.5" />
                       Live Demo
