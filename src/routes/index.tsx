@@ -22,19 +22,19 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   return (
-    <div className="relative min-h-screen bg-background text-foreground overflow-x-clip">
-      {/* Global subtle background */}
+    <div className="relative min-h-screen bg-background text-foreground overflow-x-clip antialiased">
+      {/* Global ambient background */}
       <div aria-hidden className="pointer-events-none fixed inset-0 -z-10">
         <div
-          className="absolute inset-0 opacity-[0.55]"
+          className="absolute inset-0 opacity-[0.6]"
           style={{
             background:
-              "radial-gradient(1200px 600px at 50% -10%, color-mix(in oklab, var(--primary) 12%, transparent), transparent 60%), radial-gradient(800px 500px at 100% 30%, color-mix(in oklab, var(--secondary) 10%, transparent), transparent 60%)",
+              "radial-gradient(1200px 600px at 50% -10%, color-mix(in oklab, var(--primary) 12%, transparent), transparent 60%), radial-gradient(900px 550px at 100% 30%, color-mix(in oklab, var(--secondary) 10%, transparent), transparent 60%), radial-gradient(700px 500px at 0% 70%, color-mix(in oklab, var(--primary) 6%, transparent), transparent 60%)",
           }}
         />
       </div>
       <Navbar />
-      <main>
+      <main className="relative">
         <Hero />
         <About />
         <Projects />
