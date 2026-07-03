@@ -120,7 +120,7 @@ export function Navbar() {
           href="#hero"
           className="font-mono text-sm tracking-tight text-foreground shrink-0 flex items-center gap-2 group"
         >
-          <span className="relative inline-flex h-7 w-7 items-center justify-center rounded-lg bg-gradient-to-br from-primary/90 to-secondary/80 text-[11px] font-bold text-primary-foreground shadow-[0_0_0_1px_color-mix(in_oklab,var(--primary)_35%,transparent),0_6px_20px_-8px_color-mix(in_oklab,var(--primary)_60%,transparent)] transition-transform duration-300 group-hover:scale-105">
+          <span className="relative inline-flex h-7 w-7 items-center justify-center rounded-lg bg-foreground text-[11px] font-semibold text-background transition-transform duration-300 group-hover:scale-[1.03]">
             N
           </span>
           <span className="hidden sm:inline text-foreground/90">
