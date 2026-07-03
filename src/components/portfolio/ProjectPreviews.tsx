@@ -1,4 +1,4 @@
-import { Send, Sparkles, Code2, ShieldAlert, MapPin, GitBranch, Activity, FileText } from "lucide-react";
+import { Send, Sparkles, Code2, ShieldAlert, MapPin, GitBranch, Activity, FileText, Workflow, Play, Database, Webhook, Bot } from "lucide-react";
 
 /**
  * Consistent presentation: each preview is a rounded "browser" frame with
