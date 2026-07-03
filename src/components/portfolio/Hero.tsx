@@ -83,6 +83,22 @@ function LeetCodeIcon({ className = "w-4 h-4" }: { className?: string }) {
   );
 }
 
+function CodeforcesIcon({ className = "w-4 h-4" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} fill="currentColor" aria-hidden>
+      <path d="M4.5 7.5A1.5 1.5 0 0 1 6 9v10.5A1.5 1.5 0 0 1 4.5 21h-3A1.5 1.5 0 0 1 0 19.5V9a1.5 1.5 0 0 1 1.5-1.5h3Zm9 3A1.5 1.5 0 0 1 15 12v7.5a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 19.5V12a1.5 1.5 0 0 1 1.5-1.5h3Zm9-7.5A1.5 1.5 0 0 1 24 4.5v15a1.5 1.5 0 0 1-1.5 1.5h-3a1.5 1.5 0 0 1-1.5-1.5v-15A1.5 1.5 0 0 1 19.5 3h3Z" />
+    </svg>
+  );
+}
+
+function GfgIcon({ className = "w-4 h-4" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} fill="currentColor" aria-hidden>
+      <path d="M21.45 14.32a5.61 5.61 0 0 1-1.6 1.9 6.9 6.9 0 0 1-4.28 1.4 6.94 6.94 0 0 1-2.68-.5 6.36 6.36 0 0 1-3.5-3.55 7.09 7.09 0 0 1 0-5.15 6.4 6.4 0 0 1 3.5-3.56 6.94 6.94 0 0 1 2.68-.5 6.9 6.9 0 0 1 4.28 1.4 5.6 5.6 0 0 1 1.6 1.9l-2.02 1.16a3.5 3.5 0 0 0-1.05-1.24 4.36 4.36 0 0 0-2.81-.9 4.4 4.4 0 0 0-3.28 1.32 4.72 4.72 0 0 0 0 6.44 4.4 4.4 0 0 0 3.28 1.32 4.36 4.36 0 0 0 2.81-.9 3.5 3.5 0 0 0 1.05-1.24l2.02 1.16ZM15.57 12h-3.4v-2h5.9v5.5h-2.5V12Z" />
+    </svg>
+  );
+}
+
 export function Hero() {
   return (
     <section
@@ -151,7 +167,9 @@ export function Hero() {
           <div className="mt-8 flex items-center gap-2.5 animate-in fade-in duration-700 delay-500">
             <SocialIcon href="https://github.com/Nikhil-VS1811" label="GitHub"><Github className="w-4 h-4" /></SocialIcon>
             <SocialIcon href="https://www.linkedin.com/in/nikhil-vs-8a7541288/" label="LinkedIn"><Linkedin className="w-4 h-4" /></SocialIcon>
-            <SocialIcon href="https://leetcode.com/u/Nikhil_VS/" label="LeetCode"><LeetCodeIcon /></SocialIcon>
+            <SocialIcon href="https://leetcode.com/u/Nikhilvs1811/" label="LeetCode"><LeetCodeIcon /></SocialIcon>
+            <SocialIcon href="https://codeforces.com/profile/Nikhil_1811" label="Codeforces"><CodeforcesIcon /></SocialIcon>
+            <SocialIcon href="https://www.geeksforgeeks.org/profile/nikhilvs1811" label="GeeksforGeeks"><GfgIcon /></SocialIcon>
             <SocialIcon href="mailto:nikhilvenkatesh1811@gmail.com" label="Email"><Mail className="w-4 h-4" /></SocialIcon>
           </div>
         </div>
