@@ -20,16 +20,16 @@ const projects: Project[] = [
   {
     name: "Node-Based Workflow Builder",
     description:
-      "An AI-powered visual workflow automation platform inspired by n8n that enables users to build complex automations using a drag-and-drop node editor. Users can connect AI models, APIs, databases, webhooks, and custom logic into reusable workflows. Features include authentication, workflow execution engine, scheduling, execution history, real-time logs, reusable templates, versioning, and visual debugging.",
+      "An AI-powered visual workflow automation platform inspired by n8n that enables users to build complex automations using a drag-and-drop node editor. Users can connect AI models, APIs, databases, webhooks, and custom logic into reusable workflows. Features include authentication, workflow execution engine, webhook triggers, execution history, real-time logs, reusable templates, encrypted credentials, and visual debugging.",
     stack: [
       "React",
       "TypeScript",
       "FastAPI",
       "Python",
       "PostgreSQL",
-      "Redis",
+      "Inngest",
       "Docker",
-      "WebSockets",
+      "tRPC",
       "OpenAI API",
       "Gemini API",
       "JWT",
@@ -89,7 +89,7 @@ export function Projects() {
       id="projects"
       eyebrow="Selected work"
       title="Featured projects."
-      description="End-to-end builds covering AI integration, RAG pipelines, full-stack architecture, and third-party API orchestration."
+      description="End-to-end builds covering LLM integration, full-stack architecture, and third-party API orchestration."
     >
       <div className="grid md:grid-cols-2 gap-5">
         {projects.map((p) => {
