@@ -221,10 +221,10 @@ export function Hero() {
 
           {/* Stats */}
           <div className="mt-6 grid grid-cols-2 gap-3">
-            <StatCard value={12} suffix="+" label="Projects" delay={400} />
+            <StatCard value={3} suffix="+" label="Projects" delay={400} />
             <StatCard value={18} suffix="+" label="Technologies" delay={500} />
             <StatCard value={420} suffix="+" label="GitHub Contribs" delay={600} />
-            <StatCard value={2} suffix="+ yrs" label="Experience" delay={700} />
+            <StatCard display="Final Year" label="ISE Student" delay={700} />
           </div>
         </div>
       </div>
