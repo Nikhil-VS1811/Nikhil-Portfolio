@@ -49,7 +49,7 @@ export function About() {
               <div className="mt-1 text-muted-foreground text-sm font-mono">2023 – 2027</div>
             </div>
             <div className="text-muted-foreground text-sm leading-relaxed">
-              <span className="text-foreground font-medium">CGPA: 8.88</span> (up to 5th Semester)
+              <span className="text-foreground font-medium">CGPA: 8.91</span> (up to 6th Semester)
             </div>
             <div className="text-muted-foreground text-sm leading-relaxed">
               <span className="text-foreground font-medium">Coursework:</span> Data Structures, DBMS, Operating Systems, Machine Learning, Web Engineering.
