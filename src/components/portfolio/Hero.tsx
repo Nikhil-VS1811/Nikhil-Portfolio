@@ -37,8 +37,8 @@ function useCountUp(target: number, duration = 1400) {
   return n;
 }
 
-function StatCard({ value, suffix = "", label, delay = 0 }: { value: number; suffix?: string; label: string; delay?: number }) {
-  const n = useCountUp(value);
+function StatCard({ value, suffix = "", display, label, delay = 0 }: { value?: number; suffix?: string; display?: string; label: string; delay?: number }) {
+  const n = useCountUp(value ?? 0);
   return (
     <div
       className="relative rounded-2xl border border-border bg-card/50 backdrop-blur-md p-4 overflow-hidden group hover:border-primary/40 transition-colors animate-in fade-in slide-in-from-bottom-3 duration-700"
@@ -47,7 +47,7 @@ function StatCard({ value, suffix = "", label, delay = 0 }: { value: number; suf
       <div className="absolute -inset-px rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity" style={{ background: "radial-gradient(400px circle at var(--x,50%) var(--y,50%), hsl(var(--primary)/0.08), transparent 40%)" }} />
       <div className="relative">
         <div className="text-2xl md:text-3xl font-medium tracking-tight text-foreground tabular-nums">
-          {n}
+          {display ? display : n}
           <span className="text-primary">{suffix}</span>
         </div>
         <div className="mt-1.5 text-[10.5px] uppercase tracking-[0.18em] text-muted-foreground font-mono">
@@ -123,19 +123,16 @@ export function Hero() {
           </div>
 
           <h1 className="mt-7 text-[40px] leading-[1.02] sm:text-5xl md:text-6xl lg:text-[72px] font-medium tracking-[-0.035em] text-foreground animate-in fade-in slide-in-from-bottom-3 duration-700">
-            <span className="block text-gradient">AI Engineer</span>
+            <span className="block text-gradient">Aspiring AI Engineer</span>
             <span className="block text-foreground/95">
-              &<span className="font-serif italic font-normal"> Full Stack</span>
-            </span>
-            <span className="block font-serif italic font-normal text-foreground/95">
-              Developer<span className="text-primary">.</span>
+              & Full Stack Developer<span className="text-primary">.</span>
             </span>
           </h1>
 
           <p className="mt-7 max-w-xl text-base md:text-[17px] text-muted-foreground leading-relaxed animate-in fade-in slide-in-from-bottom-4 duration-700 delay-150">
-            I'm Nikhil VS — I build scalable AI-powered web applications,
-            developer tools, and modern full-stack products. From RAG pipelines
-            to production APIs, I ship end-to-end.
+            I'm Nikhil VS — I build AI-powered web applications, developer tools,
+            and full-stack products. From LLM-integrated platforms to production
+            APIs, I ship end-to-end.
           </p>
 
           <div className="mt-9 flex flex-wrap items-center gap-3 animate-in fade-in duration-700 delay-300">
@@ -224,10 +221,10 @@ export function Hero() {
 
           {/* Stats */}
           <div className="mt-6 grid grid-cols-2 gap-3">
-            <StatCard value={12} suffix="+" label="Projects" delay={400} />
+            <StatCard value={3} suffix="+" label="Projects" delay={400} />
             <StatCard value={18} suffix="+" label="Technologies" delay={500} />
             <StatCard value={420} suffix="+" label="GitHub Contribs" delay={600} />
-            <StatCard value={2} suffix="+ yrs" label="Experience" delay={700} />
+            <StatCard display="Final Year" label="ISE Student" delay={700} />
           </div>
         </div>
       </div>
