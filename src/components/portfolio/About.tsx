@@ -16,10 +16,11 @@ export function About() {
             with Python, FastAPI, React and PostgreSQL.
           </p>
           <p>
-            Recent work includes an AI Code Review system and a Fraud Detection
-            platform — focused on scalable backend architecture, applied ML and
-            practical AI integration. I'm actively looking for AI/ML and Software
-            Engineering roles where I can contribute, learn and ship real products.
+            Recent work includes NodeBase, an AI workflow automation platform; an AI
+            Code Review system; and a Fraud Detection platform — focused on clean
+            backend architecture, applied ML and practical AI integration. I'm actively
+            looking for AI/ML and Software Engineering roles where I can contribute,
+            learn and ship real products.
           </p>
         </div>
         <div className="surface rounded-2xl p-6 space-y-5 font-mono text-sm h-fit">
