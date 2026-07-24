@@ -123,19 +123,16 @@ export function Hero() {
           </div>
 
           <h1 className="mt-7 text-[40px] leading-[1.02] sm:text-5xl md:text-6xl lg:text-[72px] font-medium tracking-[-0.035em] text-foreground animate-in fade-in slide-in-from-bottom-3 duration-700">
-            <span className="block text-gradient">AI Engineer</span>
+            <span className="block text-gradient">Aspiring AI Engineer</span>
             <span className="block text-foreground/95">
-              &<span className="font-serif italic font-normal"> Full Stack</span>
-            </span>
-            <span className="block font-serif italic font-normal text-foreground/95">
-              Developer<span className="text-primary">.</span>
+              & Full Stack Developer<span className="text-primary">.</span>
             </span>
           </h1>
 
           <p className="mt-7 max-w-xl text-base md:text-[17px] text-muted-foreground leading-relaxed animate-in fade-in slide-in-from-bottom-4 duration-700 delay-150">
-            I'm Nikhil VS — I build scalable AI-powered web applications,
-            developer tools, and modern full-stack products. From RAG pipelines
-            to production APIs, I ship end-to-end.
+            I'm Nikhil VS — I build AI-powered web applications, developer tools,
+            and full-stack products. From LLM-integrated platforms to production
+            APIs, I ship end-to-end.
           </p>
 
           <div className="mt-9 flex flex-wrap items-center gap-3 animate-in fade-in duration-700 delay-300">
