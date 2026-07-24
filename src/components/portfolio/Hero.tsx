@@ -37,8 +37,8 @@ function useCountUp(target: number, duration = 1400) {
   return n;
 }
 
-function StatCard({ value, suffix = "", label, delay = 0 }: { value: number; suffix?: string; label: string; delay?: number }) {
-  const n = useCountUp(value);
+function StatCard({ value, suffix = "", display, label, delay = 0 }: { value?: number; suffix?: string; display?: string; label: string; delay?: number }) {
+  const n = useCountUp(value ?? 0);
   return (
     <div
       className="relative rounded-2xl border border-border bg-card/50 backdrop-blur-md p-4 overflow-hidden group hover:border-primary/40 transition-colors animate-in fade-in slide-in-from-bottom-3 duration-700"
@@ -47,7 +47,7 @@ function StatCard({ value, suffix = "", label, delay = 0 }: { value: number; suf
       <div className="absolute -inset-px rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity" style={{ background: "radial-gradient(400px circle at var(--x,50%) var(--y,50%), hsl(var(--primary)/0.08), transparent 40%)" }} />
       <div className="relative">
         <div className="text-2xl md:text-3xl font-medium tracking-tight text-foreground tabular-nums">
-          {n}
+          {display ? display : n}
           <span className="text-primary">{suffix}</span>
         </div>
         <div className="mt-1.5 text-[10.5px] uppercase tracking-[0.18em] text-muted-foreground font-mono">
