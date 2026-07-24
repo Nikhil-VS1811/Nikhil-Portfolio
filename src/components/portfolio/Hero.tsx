@@ -2,15 +2,13 @@ import { useEffect, useState } from "react";
 import { ArrowRight, Download, Github, Linkedin, Mail, Code2 } from "lucide-react";
 
 const codeLines: Array<{ tokens: Array<{ t: string; c?: string }> }> = [
-  { tokens: [{ t: "import", c: "kw" }, { t: " { " }, { t: "FastAPI", c: "cls" }, { t: " } " }, { t: "from", c: "kw" }, { t: " " }, { t: '"fastapi"', c: "str" } ] },
-  { tokens: [{ t: "import", c: "kw" }, { t: " " }, { t: "openai", c: "cls" }, { t: ", " }, { t: "chromadb", c: "cls" } ] },
+  { tokens: [{ t: "class", c: "kw" }, { t: " " }, { t: "AIReviewProvider", c: "cls" }, { t: "(" }, { t: "Protocol", c: "cls" }, { t: "):" } ] },
+  { tokens: [{ t: "    " }, { t: "def", c: "kw" }, { t: " " }, { t: "generate_review", c: "fn" }, { t: "(" }, { t: "self", c: "var" }, { t: ", " }, { t: "prompt", c: "var" }, { t: ": " }, { t: "str", c: "cls" }, { t: ") -> " }, { t: "str", c: "cls" }, { t: ": ..." } ] },
   { tokens: [] },
-  { tokens: [{ t: "app", c: "var" }, { t: " = " }, { t: "FastAPI", c: "fn" }, { t: "()" } ] },
-  { tokens: [] },
-  { tokens: [{ t: "@app", c: "dec" }, { t: "." }, { t: "post", c: "fn" }, { t: "(" }, { t: '"/review"', c: "str" }, { t: ")" } ] },
-  { tokens: [{ t: "async", c: "kw" }, { t: " " }, { t: "def", c: "kw" }, { t: " " }, { t: "review", c: "fn" }, { t: "(" }, { t: "repo", c: "var" }, { t: ": " }, { t: "str", c: "cls" }, { t: "):" } ] },
-  { tokens: [{ t: "    ctx", c: "var" }, { t: " = " }, { t: "await", c: "kw" }, { t: " " }, { t: "vector", c: "var" }, { t: "." }, { t: "search", c: "fn" }, { t: "(" }, { t: "repo", c: "var" }, { t: ")" } ] },
-  { tokens: [{ t: "    ", }, { t: "return", c: "kw" }, { t: " " }, { t: "await", c: "kw" }, { t: " " }, { t: "gemini", c: "var" }, { t: "." }, { t: "analyze", c: "fn" }, { t: "(" }, { t: "ctx", c: "var" }, { t: ")" } ] },
+  { tokens: [{ t: "def", c: "kw" }, { t: " " }, { t: "get_ai_review_provider", c: "fn" }, { t: "():" } ] },
+  { tokens: [{ t: "    " }, { t: "if", c: "kw" }, { t: " " }, { t: "settings", c: "var" }, { t: "." }, { t: "AI_PROVIDER", c: "var" }, { t: " == " }, { t: '"ollama"', c: "str" }, { t: ":" } ] },
+  { tokens: [{ t: "        " }, { t: "return", c: "kw" }, { t: " " }, { t: "OllamaReviewProvider", c: "cls" }, { t: "(" }, { t: "model", c: "var" }, { t: "=" }, { t: '"qwen2.5-coder"', c: "str" }, { t: ")" } ] },
+  { tokens: [{ t: "    " }, { t: "return", c: "kw" }, { t: " " }, { t: "MockAIReviewProvider", c: "cls" }, { t: "()" } ] },
 ];
 
 const tokenColor: Record<string, string> = {
