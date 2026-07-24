@@ -11,11 +11,11 @@ const groups = [
   },
   {
     title: "Backend",
-    items: ["FastAPI", "Flask", "PostgreSQL", "SQLAlchemy", "REST APIs"],
+    items: ["FastAPI", "PostgreSQL", "SQLAlchemy", "Prisma", "tRPC", "REST APIs"],
   },
   {
     title: "AI & Tooling",
-    items: ["OpenAI API", "Gemini API", "Docker", "Git", "GitHub", "Vercel", "Render"],
+    items: ["OpenAI API", "Gemini API", "Anthropic API", "Inngest", "XGBoost", "SHAP", "Docker", "Git", "GitHub", "Vercel", "Render"],
   },
 ];
 
