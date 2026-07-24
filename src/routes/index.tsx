@@ -38,8 +38,6 @@ function Index() {
         <About />
         <Projects />
         <Skills />
-        <Profiles />
-        <Resume />
         <Certifications />
         <Contact />
       </main>
