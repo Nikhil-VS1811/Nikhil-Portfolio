@@ -1,3 +1,4 @@
+import { resumeRequest } from "@/data/portfolio";
 import { useEffect, useRef, useState } from "react";
 import { Download, Github, Moon, Sun } from "lucide-react";
 
@@ -151,9 +152,8 @@ export function Navbar() {
         {/* Right actions */}
         <div className="flex items-center gap-1.5 sm:gap-2 pr-1">
           <a
-            href="/resume.pdf"
-            download
-            className="hidden sm:inline-flex items-center gap-1.5 text-[12.5px] font-medium h-9 px-3.5 rounded-full bg-foreground text-background hover:bg-foreground/90 hover:-translate-y-[1px] transition-all duration-200 shrink-0"
+            href={resumeRequest}
+                        className="hidden sm:inline-flex items-center gap-1.5 text-[12.5px] font-medium h-9 px-3.5 rounded-full bg-foreground text-background hover:bg-foreground/90 hover:-translate-y-[1px] transition-all duration-200 shrink-0"
           >
             <Download className="w-3.5 h-3.5" />
             Resume
@@ -216,13 +216,12 @@ export function Navbar() {
           ))}
           <li className="pt-3 mt-1 border-t border-border grid grid-cols-[1fr_auto] gap-2 items-center">
             <a
-              href="/resume.pdf"
-              download
-              onClick={() => setOpen(false)}
+              href={resumeRequest}
+                            onClick={() => setOpen(false)}
               className="flex items-center justify-center gap-2 h-11 text-sm font-medium rounded-full bg-foreground text-background hover:bg-foreground/90 transition-colors"
             >
               <Download className="w-3.5 h-3.5" />
-              Download Resume
+              Request Resume
             </a>
             <a
               href="https://github.com/Nikhil-VS1811"

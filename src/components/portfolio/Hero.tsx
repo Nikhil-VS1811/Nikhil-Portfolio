@@ -1,3 +1,4 @@
+import { resumeRequest } from "@/data/portfolio";
 import { useEffect, useState } from "react";
 import { ArrowRight, Download, Mail, Code2 } from "lucide-react";
 
@@ -159,12 +160,11 @@ export function Hero() {
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
             </a>
             <a
-              href="/resume.pdf"
-              download
-              className="inline-flex items-center gap-2 h-11 px-5 rounded-full border border-border bg-card/40 backdrop-blur-md text-sm font-medium text-foreground hover:border-primary/60 hover:bg-card/70 transition-colors"
+              href={resumeRequest}
+                            className="inline-flex items-center gap-2 h-11 px-5 rounded-full border border-border bg-card/40 backdrop-blur-md text-sm font-medium text-foreground hover:border-primary/60 hover:bg-card/70 transition-colors"
             >
               <Download className="w-4 h-4" />
-              Download Resume
+              Request Resume
             </a>
             <a
               href="#contact"

@@ -1,44 +1,47 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Navbar } from "@/components/portfolio/Navbar";
-import { Hero } from "@/components/portfolio/Hero";
-import { About } from "@/components/portfolio/About";
-import { Projects } from "@/components/portfolio/Projects";
-import { Skills } from "@/components/portfolio/Skills";
-import { Contact } from "@/components/portfolio/Contact";
-import { Certifications } from "@/components/portfolio/Certifications";
-
+import { Header } from "@/components/systems/Header";
+import { Hero } from "@/components/systems/Hero";
+import { Projects } from "@/components/systems/Projects";
+import { OpenSource } from "@/components/systems/OpenSource";
+import { Benchmarks } from "@/components/systems/Benchmarks";
+import {
+  Achievements,
+  Contact,
+  Education,
+  Experience,
+  Skills,
+} from "@/components/systems/Background";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Nikhil VS — AI-Focused Full Stack Developer" },
-      { name: "description", content: "Portfolio of Nikhil VS, a full stack developer building practical AI-powered web applications with Flask, modern frontend tech, and intelligent workflows." },
-      { property: "og:title", content: "Nikhil VS — AI-Focused Full Stack Developer" },
-      { property: "og:description", content: "Projects, skills and coding profiles from a developer who ships end-to-end AI products." },
+      { title: "Nikhil V S — Software Engineer | Backend Systems" },
+      {
+        name: "description",
+        content:
+          "Software engineer in Bengaluru building low-latency backends, event-driven DAG engines, and deterministic code analysis systems. Available Jan–Jun 2027.",
+      },
+      { property: "og:title", content: "Nikhil V S — Software Engineer" },
+      {
+        property: "og:description",
+        content: "Backend systems, measured performance, and engineering case studies.",
+      },
     ],
   }),
   component: Index,
 });
-
 function Index() {
   return (
-    <div className="relative min-h-screen bg-background text-foreground overflow-x-clip antialiased">
-      {/* Global ambient background */}
-      <div aria-hidden className="pointer-events-none fixed inset-0 -z-10">
-        <div
-          className="absolute inset-0 opacity-[0.6]"
-          style={{
-            background:
-              "radial-gradient(1200px 600px at 50% -10%, color-mix(in oklab, var(--primary) 12%, transparent), transparent 60%), radial-gradient(900px 550px at 100% 30%, color-mix(in oklab, var(--secondary) 10%, transparent), transparent 60%), radial-gradient(700px 500px at 0% 70%, color-mix(in oklab, var(--primary) 6%, transparent), transparent 60%)",
-          }}
-        />
-      </div>
-      <Navbar />
-      <main className="relative">
+    <div className="site-shell">
+      <Header />
+      <main id="main">
         <Hero />
-        <About />
         <Projects />
+        <Benchmarks />
+        <Experience />
+        <OpenSource />
+        <Achievements />
+        <Education />
         <Skills />
-        <Certifications />
         <Contact />
       </main>
     </div>
